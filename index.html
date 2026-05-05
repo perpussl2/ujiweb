@@ -4,294 +4,1658 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perpustakaan SMA Katolik St. Louis 2</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        :root { --font: 'Plus Jakarta Sans', sans-serif; --r-s:8px; --r-m:12px; --r-l:16px; --r-xl:24px; --r-f:999px; --t-f:.2s cubic-bezier(.4,0,.2,1); --t-n:.3s cubic-bezier(.4,0,.2,1); }
-        [data-theme="light"] { --bg:#f8f9fc; --card:#fff; --nav:rgba(255,255,255,.85); --ov:rgba(0,0,0,.5); --txt:#1a1a2e; --txt2:#4a4a6a; --txt3:#8888a8; --acc:#4f46e5; --grad:linear-gradient(135deg,#4f46e5,#7c3aed,#a855f7); --brd:#e5e7eb; --brd2:#f0f0f5; --s1:linear-gradient(135deg,#4f46e5,#7c3aed); --s2:linear-gradient(135deg,#06b6d4,#3b82f6); --s3:linear-gradient(135deg,#10b981,#059669); }
-        [data-theme="dark"] { --bg:#1a1a2e; --card:#1a1a2e; --nav:rgba(15,15,26,.92); --ov:rgba(0,0,0,.7); --txt:#e8e8f0; --txt2:#a8a8c0; --txt3:#6a6a8a; --acc:#818cf8; --grad:linear-gradient(135deg,#818cf8,#a78bfa,#c084fc); --brd:#2a2a4a; --brd2:#1e1e3a; --s1:linear-gradient(135deg,#4f46e5,#7c3aed); --s2:linear-gradient(135deg,#0891b2,#2563eb); --s3:linear-gradient(135deg,#059669,#0d9488); }
-        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:var(--font);background:var(--bg);color:var(--txt);transition:background .3s,color .3s;overflow-x:hidden}
-        .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--nav);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd2);padding:0 24px}
-        .nav-i{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px;gap:20px}
-        .nav-b{display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer}
-        .nav-lp{width:44px;height:44px;border-radius:var(--r-m);background:var(--grad);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px;position:relative;overflow:hidden;flex-shrink:0}
-        .nav-lp img{width:100%;height:100%;object-fit:cover;position:absolute}
-        .nav-tp{font-size:15px;font-weight:700;color:var(--txt)}.nav-tp small{display:block;font-size:11px;font-weight:400;color:var(--txt3)}
-        .nav-ll{display:flex;gap:2px;list-style:none}.nav-ll a{text-decoration:none;color:var(--txt2);font-size:13px;font-weight:500;padding:8px 14px;border-radius:var(--r-f);transition:all var(--t-f);white-space:nowrap}
-        .nav-ll a:hover,.nav-ll a.act{color:var(--acc);background:rgba(79,70,229,.1)}
-        .thm{width:40px;height:40px;border-radius:var(--r-m);border:1px solid var(--brd);background:var(--card);color:var(--txt2);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all var(--t-f)}
-        .thm:hover{transform:rotate(180deg);color:var(--acc)}
-        .main{padding-top:70px;min-height:100vh}.sec{display:none;animation:fadeUp .5s}.sec.on{display:block}
-        .con{max-width:1400px;margin:0 auto;padding:0 24px}
-        @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-        .bns{position:relative;width:100%;height:480px;overflow:hidden;border-radius:var(--r-xl);margin-top:24px}
-        .bnt{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1);height:100%}
-        .bnd{min-width:100%;position:relative;height:100%}
-        .bnd img{width:100%;height:100%;object-fit:cover}
-        .bno{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-        .bnc{text-align:center;color:#fff;padding:40px;max-width:700px}
-        .bnc h2{font-size:clamp(24px,4vw,44px);font-weight:800;margin-bottom:16px;text-shadow:0 2px 10px rgba(0,0,0,.3)}
-        .bnc p{font-size:clamp(14px,2vw,17px);opacity:.9;margin-bottom:28px}
-        .bnn{display:inline-flex;align-items:center;gap:8px;padding:12px 32px;border-radius:var(--r-f);background:#fff;color:var(--acc);font-weight:600;font-size:15px;text-decoration:none;transition:all var(--t-f);border:none;cursor:pointer}
-        .bnav{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:5}
-        .bdot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all var(--t-f);border:none}
-        .bdot.act{background:#fff;width:32px;border-radius:5px}
-        .bar{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;z-index:5;transition:all var(--t-f)}
-        .bar:hover{background:rgba(255,255,255,.3)}.bar.p{left:20px}.bar.n{right:20px}
-        .stg{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:40px 0}
-        .stc{border-radius:var(--r-xl);padding:28px;color:#fff;position:relative;overflow:hidden;transition:all var(--t-n)}
-        .stc:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,.2)}
-        .stc:nth-child(1){background:var(--s1)}.stc:nth-child(2){background:var(--s2)}.stc:nth-child(3){background:var(--s3)}
-        .sti{width:48px;height:48px;border-radius:var(--r-m);background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
-        .stn{font-size:32px;font-weight:800;margin-bottom:4px}.stl{font-size:14px;opacity:.85}
-        .bksec{padding:20px 0 40px}.bkhd{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
-        .bkt{font-size:22px;font-weight:700;display:flex;align-items:center;gap:10px}.bkt i{color:var(--acc)}
-        .bkg{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-        .bkc{background:var(--card);border-radius:var(--r-l);overflow:hidden;border:1px solid var(--brd2);transition:all var(--t-n);cursor:pointer;position:relative}
-        .bkc:hover{transform:translateY(-6px);box-shadow:0 8px 30px rgba(0,0,0,.15);border-color:var(--acc)}
-        .bki{width:100%;height:220px;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:48px;color:#fff}
-        .bkb{padding:16px}.bktl{font-size:14px;font-weight:700;margin-bottom:4px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-        .bka{font-size:13px;color:var(--txt3);margin-bottom:8px}.bkm{display:flex;gap:6px;flex-wrap:wrap}
-        .btag{padding:3px 10px;border-radius:var(--r-f);font-size:11px;font-weight:600;background:rgba(79,70,229,.1);color:var(--acc)}
-        .qsec{padding:20px 0 40px}.qcard{background:var(--grad);border-radius:var(--r-xl);padding:48px;text-align:center;color:#fff;position:relative;overflow:hidden}
-        .qtxt{font-size:clamp(18px,2.5vw,26px);font-weight:600;line-height:1.6;margin-bottom:20px}.qauth{font-size:15px;opacity:.85}
-        .tpg{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:20px 0}
-        .tpc{background:var(--card);border-radius:var(--r-xl);padding:24px;text-align:center;border:1px solid var(--brd2);transition:all var(--t-n)}
-        .tpc:hover{transform:translateY(-4px)}.tpr{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;margin:0 auto 12px;color:#fff}
-        .tpc:nth-child(1) .tpr{background:#f59e0b;color:#92400e}.tpc:nth-child(2) .tpr{background:#64748b;color:#e2e8f0}.tpc:nth-child(3) .tpr{background:#b45309;color:#fff}
-        .tpa{width:60px;height:60px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:700;margin:0 auto 12px}
-        .tpn{font-size:15px;font-weight:700;margin-bottom:4px}.tpc2{font-size:13px;color:var(--txt3)}
-        .arg{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:20px 0 40px}
-        .arc{background:var(--card);border-radius:var(--r-xl);overflow:hidden;border:1px solid var(--brd2);transition:all var(--t-n);cursor:pointer}
-        .arc:hover{transform:translateY(-4px)}.arimg{width:100%;height:180px;object-fit:cover}
-        .arb{padding:20px}.ard{font-size:12px;color:var(--acc);font-weight:600;margin-bottom:8px}
-        .art{font-size:15px;font-weight:700;margin-bottom:8px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-        .are{font-size:13px;color:var(--txt3);line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-        .ktabs{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap;justify-content:center}
-        .ktab{padding:10px 24px;border-radius:var(--r-f);border:1px solid var(--brd);background:var(--card);color:var(--txt2);font-weight:600;font-size:14px;cursor:pointer;transition:all var(--t-f)}
-        .ktab:hover{border-color:var(--acc);color:var(--acc)}.ktab.act{background:var(--grad);color:#fff;border-color:transparent}
-        .rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-bottom:40px}
-        .rc{background:var(--card);border:1px solid var(--brd2);border-radius:var(--r-l);padding:24px;text-align:center;cursor:pointer;transition:all var(--t-n)}
-        .rc:hover{transform:translateY(-4px);border-color:var(--acc)}.rc.act{border-color:var(--acc);background:rgba(79,70,229,.05)}
-        .rn{font-size:28px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}
-        .rcnt{font-size:13px;color:var(--txt3)}
-        .pro{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:48px}
-        .ps{background:var(--card);border:1px solid var(--brd2);border-radius:var(--r-xl);padding:24px}
-        .pst{font-size:16px;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:8px;color:var(--txt)}.pst i{color:var(--acc)}
-        .pc{display:flex;align-items:flex-end;justify-content:center;gap:12px;padding:20px 0 0}
-        .pi{text-align:center;transition:all var(--t-n)}.pi:hover{transform:translateY(-6px)}
-        .pav{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;font-weight:700;margin:0 auto 8px;background:var(--grad)}
-        .pi:nth-child(2) .pav{width:64px;height:64px;font-size:24px;box-shadow:0 4px 20px rgba(251,191,36,.4)}
-        .pcrn{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:20px}
-        .pnm{font-size:13px;font-weight:700;margin-bottom:2px}.pct{font-size:11px;color:var(--txt3);margin-bottom:8px}
-        .pbar{width:80px;border-radius:var(--r-m) var(--r-m) 0 0;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff}
-        .pi:nth-child(1) .pbar{background:#64748b;height:80px;color:#1e293b}.pi:nth-child(2) .pbar{background:#f59e0b;height:110px;color:#92400e}.pi:nth-child(3) .pbar{background:#b45309;height:56px;color:#fff}
-        .lbc{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;padding:20px 0 60px}
-        .chc{background:var(--card);border-radius:var(--r-xl);padding:24px;border:1px solid var(--brd2)}
-        .cht{font-size:15px;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:8px}.cht i{color:var(--acc)}
-        .bch{display:flex;flex-direction:column;gap:12px}.bi{display:flex;align-items:center;gap:12px}
-        .bl{font-size:13px;font-weight:500;color:var(--txt2);min-width:100px;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-        .bt{flex:1;height:24px;background:var(--bg);border-radius:var(--r-f);overflow:hidden}
-        .bf{height:100%;border-radius:var(--r-f);background:var(--grad);transition:width 1s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;justify-content:flex-end;padding-right:8px;min-width:0}
-        .bv{font-size:11px;font-weight:700;color:#fff;white-space:nowrap}
-        .prg{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;padding:40px 0 60px}
-        .prc{background:var(--card);border-radius:var(--r-xl);padding:32px;border:1px solid var(--brd2);transition:all var(--t-n)}.prc:hover{transform:translateY(-4px)}
-        .prt{font-size:20px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px}.prt i{color:var(--acc)}
-        .prc p,.prc li{font-size:15px;color:var(--txt2);line-height:1.8}.prc ul{list-style:none;padding:0}
-        .prc ul li{padding:8px 0 8px 24px;position:relative}.prc ul li::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:var(--grad)}
-        .dokg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;padding:20px 0 60px}
-        .doki{background:var(--card);border-radius:var(--r-xl);overflow:hidden;border:1px solid var(--brd2);transition:all var(--t-n);cursor:pointer}
-        .doki:hover{transform:translateY(-6px)}.dokimg{width:100%;height:200px;object-fit:cover}
-        .dokb{padding:16px}.dokt{font-size:15px;font-weight:700;margin-bottom:4px}.dokd{font-size:13px;color:var(--txt3);line-height:1.5}
-        .layg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;padding:40px 0 60px}
-        .layc{background:var(--card);border-radius:var(--r-xl);padding:32px;border:1px solid var(--brd2);transition:all var(--t-n);cursor:pointer;text-align:center}
-        .layc:hover{transform:translateY(-6px)}.layi{width:64px;height:64px;border-radius:var(--r-l);background:rgba(79,70,229,.1);display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--acc);margin:0 auto 16px;transition:all var(--t-f)}
-        .layc:hover .layi{background:var(--grad);color:#fff;transform:scale(1.1)}
-        .layt{font-size:18px;font-weight:700;margin-bottom:8px}.layd{font-size:14px;color:var(--txt3);line-height:1.6}
-        .ft{background:var(--bg);border-top:1px solid var(--brd2);padding:40px 0 20px;margin-top:40px;text-align:center;color:var(--txt3)}
-        .btt{position:fixed;bottom:24px;right:24px;width:48px;height:48px;border-radius:50%;background:var(--grad);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;z-index:100;opacity:0;transform:translateY(20px);transition:all var(--t-n);box-shadow:0 8px 30px rgba(0,0,0,.2)}
-        .btt.vis{opacity:1;transform:translateY(0)}.btt:hover{transform:translateY(-4px)}
-        .par{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}.prt{position:absolute;width:4px;height:4px;background:var(--acc);border-radius:50%;opacity:.1;animation:float 6s ease-in-out infinite}
-        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-        @media(max-width:768px){.nav-ll{display:none}.bns{height:320px}.stg,.bkg,.arg,.tpg{grid-template-columns:1fr}.pro,.prg,.lbc{grid-template-columns:1fr}.con{padding:0 16px}}
+        :root {
+            --font-primary: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+            --shadow-xl: 0 20px 60px rgba(0,0,0,0.15);
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fc;
+            --bg-tertiary: #f0f2f7;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f8f9fc;
+            --bg-navbar: rgba(255,255,255,0.85);
+            --bg-overlay: rgba(0,0,0,0.5);
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-tertiary: #8888a8;
+            --text-inverse: #ffffff;
+            --accent-primary: #4f46e5;
+            --accent-secondary: #7c3aed;
+            --accent-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #a855f7 100%);
+            --accent-gradient-2: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            --accent-gradient-3: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+            --accent-gradient-4: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+            --border-color: #e5e7eb;
+            --border-light: #f0f0f5;
+            --podium-1: linear-gradient(135deg, #fbbf24, #f59e0b);
+            --podium-2: linear-gradient(135deg, #94a3b8, #64748b);
+            --podium-3: linear-gradient(135deg, #d97706, #b45309);
+            --podium-1-text: #92400e;
+            --podium-2-text: #1e293b;
+            --podium-3-text: #fff;
+            --stat-card-1: linear-gradient(135deg, #4f46e5, #7c3aed);
+            --stat-card-2: linear-gradient(135deg, #06b6d4, #3b82f6);
+            --stat-card-3: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f0f1a;
+            --bg-secondary: #1a1a2e;
+            --bg-tertiary: #16213e;
+            --bg-card: #1a1a2e;
+            --bg-card-hover: #222240;
+            --bg-navbar: rgba(15,15,26,0.92);
+            --bg-overlay: rgba(0,0,0,0.7);
+            --text-primary: #e8e8f0;
+            --text-secondary: #a8a8c0;
+            --text-tertiary: #6a6a8a;
+            --text-inverse: #0f0f1a;
+            --accent-primary: #818cf8;
+            --accent-secondary: #a78bfa;
+            --accent-gradient: linear-gradient(135deg, #818cf8 0%, #a78bfa 50%, #c084fc 100%);
+            --accent-gradient-2: linear-gradient(135deg, #22d3ee 0%, #60a5fa 100%);
+            --accent-gradient-3: linear-gradient(135deg, #fbbf24 0%, #f87171 100%);
+            --accent-gradient-4: linear-gradient(135deg, #34d399 0%, #22d3ee 100%);
+            --border-color: #2a2a4a;
+            --border-light: #1e1e3a;
+            --podium-1: linear-gradient(135deg, #fbbf24, #f59e0b);
+            --podium-2: linear-gradient(135deg, #64748b, #475569);
+            --podium-3: linear-gradient(135deg, #d97706, #b45309);
+            --podium-1-text: #92400e;
+            --podium-2-text: #e2e8f0;
+            --podium-3-text: #fff;
+            --stat-card-1: linear-gradient(135deg, #4f46e5, #7c3aed);
+            --stat-card-2: linear-gradient(135deg, #0891b2, #2563eb);
+            --stat-card-3: linear-gradient(135deg, #059669, #0d9488);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.5);
+            --shadow-xl: 0 20px 60px rgba(0,0,0,0.6);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body {
+            font-family: var(--font-primary);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            transition: background var(--transition-normal), color var(--transition-normal);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-secondary); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-primary); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-secondary); }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        @keyframes slideInModal { from { opacity: 0; transform: scale(0.95) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+        .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: var(--bg-navbar); backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-light);
+            transition: all var(--transition-normal); padding: 0 24px;
+        }
+        .navbar.scrolled { box-shadow: var(--shadow-md); }
+        .navbar-inner {
+            max-width: 1400px; margin: 0 auto; display: flex;
+            align-items: center; justify-content: space-between; height: 70px; gap: 20px;
+        }
+        .navbar-brand {
+            display: flex; align-items: center; gap: 12px; text-decoration: none;
+            flex-shrink: 0; cursor: pointer;
+        }
+        .navbar-logo-placeholder {
+            width: 44px; height: 44px; border-radius: var(--radius-md);
+            background: var(--accent-gradient); display: flex; align-items: center;
+            justify-content: center; color: white; font-weight: 800; font-size: 16px;
+            flex-shrink: 0; position: relative; overflow: hidden;
+        }
+        .navbar-logo-placeholder img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
+        .navbar-logo-placeholder span { position: relative; z-index: 1; }
+        .navbar-title { font-size: 15px; font-weight: 700; color: var(--text-primary); line-height: 1.2; }
+        .navbar-title small { display: block; font-size: 11px; font-weight: 400; color: var(--text-tertiary); }
+        .navbar-links { display: flex; align-items: center; gap: 2px; list-style: none; }
+        .navbar-links a {
+            text-decoration: none; color: var(--text-secondary); font-size: 13px; font-weight: 500;
+            padding: 8px 14px; border-radius: var(--radius-full); transition: all var(--transition-fast);
+            display: flex; align-items: center; gap: 6px; white-space: nowrap;
+        }
+        .navbar-links a i { font-size: 14px; }
+        .navbar-links a:hover, .navbar-links a.active { color: var(--accent-primary); background: rgba(79, 70, 229, 0.1); }
+        .navbar-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+        .theme-toggle {
+            width: 40px; height: 40px; border-radius: var(--radius-md);
+            border: 1px solid var(--border-color); background: var(--bg-card);
+            color: var(--text-secondary); cursor: pointer; display: flex;
+            align-items: center; justify-content: center; font-size: 16px;
+            transition: all var(--transition-fast);
+        }
+        .theme-toggle:hover { background: var(--bg-card-hover); color: var(--accent-primary); transform: rotate(180deg); }
+        .hamburger {
+            display: none; width: 40px; height: 40px; border-radius: var(--radius-md);
+            border: 1px solid var(--border-color); background: var(--bg-card);
+            color: var(--text-secondary); cursor: pointer; flex-direction: column;
+            align-items: center; justify-content: center; gap: 5px;
+        }
+        .hamburger span { display: block; width: 18px; height: 2px; background: var(--text-secondary); border-radius: 2px; transition: all var(--transition-fast); }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        .mobile-menu {
+            display: none; position: fixed; top: 70px; left: 0; right: 0; bottom: 0;
+            background: var(--bg-primary); z-index: 999; padding: 20px;
+            animation: fadeInDown 0.3s ease;
+        }
+        .mobile-menu.active { display: flex; flex-direction: column; gap: 4px; }
+        .mobile-menu a {
+            display: flex; align-items: center; gap: 12px; text-decoration: none;
+            color: var(--text-primary); padding: 14px 20px; border-radius: var(--radius-md);
+            font-size: 15px; font-weight: 500; transition: all var(--transition-fast);
+        }
+        .mobile-menu a:hover, .mobile-menu a.active { background: rgba(79, 70, 229, 0.1); color: var(--accent-primary); }
+        .mobile-menu a i { width: 22px; text-align: center; }
+
+        /* MAIN */
+        .main-content { padding-top: 70px; min-height: 100vh; }
+        .section { display: none; animation: fadeInUp 0.5s ease; }
+        .section.active { display: block; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+
+        .section-header { text-align: center; margin-bottom: 48px; padding-top: 40px; }
+        .section-badge {
+            display: inline-flex; align-items: center; gap: 6px; padding: 6px 16px;
+            border-radius: var(--radius-full); background: rgba(79, 70, 229, 0.1);
+            color: var(--accent-primary); font-size: 13px; font-weight: 600; margin-bottom: 16px;
+        }
+        .section-title {
+            font-size: clamp(28px, 4vw, 42px); font-weight: 800; line-height: 1.2;
+            margin-bottom: 12px; background: var(--accent-gradient);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .section-subtitle { font-size: 16px; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+
+        /* BANNER */
+        .banner-slider {
+            position: relative; width: 100%; height: 480px; overflow: hidden;
+            border-radius: var(--radius-xl); margin-top: 24px;
+        }
+        .banner-track { display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); height: 100%; }
+        .banner-slide { min-width: 100%; position: relative; height: 100%; }
+        .banner-slide img { width: 100%; height: 100%; object-fit: cover; }
+        .banner-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(79,70,229,0.7) 0%, rgba(124,58,237,0.5) 100%);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .banner-content { text-align: center; color: white; padding: 40px; max-width: 700px; }
+        .banner-content h2 {
+            font-size: clamp(24px, 4vw, 44px); font-weight: 800; margin-bottom: 16px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .banner-content p { font-size: clamp(14px, 2vw, 17px); opacity: 0.9; margin-bottom: 28px; }
+        .banner-btn {
+            display: inline-flex; align-items: center; gap: 8px; padding: 12px 32px;
+            border-radius: var(--radius-full); background: white; color: var(--accent-primary);
+            font-weight: 600; font-size: 15px; text-decoration: none;
+            transition: all var(--transition-fast); border: none; cursor: pointer;
+        }
+        .banner-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+        .banner-nav {
+            position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 8px; z-index: 5;
+        }
+        .banner-dot {
+            width: 10px; height: 10px; border-radius: 50%;
+            background: rgba(255,255,255,0.4); cursor: pointer;
+            transition: all var(--transition-fast); border: none;
+        }
+        .banner-dot.active { background: white; width: 32px; border-radius: 5px; }
+        .banner-arrow {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 44px; height: 44px; border-radius: 50%;
+            background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2); color: white; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; z-index: 5; transition: all var(--transition-fast);
+        }
+        .banner-arrow:hover { background: rgba(255,255,255,0.3); }
+        .banner-arrow.prev { left: 20px; }
+        .banner-arrow.next { right: 20px; }
+
+        /* STATS */
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 20px; padding: 40px 0;
+        }
+        .stat-card {
+            border-radius: var(--radius-xl); padding: 28px; color: white;
+            position: relative; overflow: hidden; transition: all var(--transition-normal); cursor: default;
+        }
+        .stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-xl); }
+        .stat-card::before {
+            content: ''; position: absolute; top: -40%; right: -40%;
+            width: 80%; height: 80%; background: rgba(255,255,255,0.08); border-radius: 50%;
+        }
+        .stat-card::after {
+            content: ''; position: absolute; bottom: -30%; left: -20%;
+            width: 60%; height: 60%; background: rgba(255,255,255,0.05); border-radius: 50%;
+        }
+        .stat-card:nth-child(1) { background: var(--stat-card-1); }
+        .stat-card:nth-child(2) { background: var(--stat-card-2); }
+        .stat-card:nth-child(3) { background: var(--stat-card-3); }
+        .stat-icon {
+            width: 48px; height: 48px; border-radius: var(--radius-md);
+            background: rgba(255,255,255,0.2); display: flex; align-items: center;
+            justify-content: center; font-size: 20px; margin-bottom: 16px; position: relative; z-index: 1;
+        }
+        .stat-number { font-size: 32px; font-weight: 800; margin-bottom: 4px; position: relative; z-index: 1; }
+        .stat-label { font-size: 14px; opacity: 0.85; position: relative; z-index: 1; }
+
+        /* BOOKS */
+        .books-section { padding: 20px 0 40px; }
+        .books-section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+        .books-section-title { font-size: 22px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+        .books-section-title i { color: var(--accent-primary); }
+        .see-all-btn {
+            display: inline-flex; align-items: center; gap: 6px; color: var(--accent-primary);
+            font-weight: 600; font-size: 13px; text-decoration: none; padding: 8px 18px;
+            border-radius: var(--radius-full); transition: all var(--transition-fast);
+            border: none; background: rgba(79, 70, 229, 0.1); cursor: pointer;
+        }
+        .see-all-btn:hover { background: rgba(79, 70, 229, 0.2); transform: translateX(4px); }
+        .books-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .book-card {
+            background: var(--bg-card); border-radius: var(--radius-lg); overflow: hidden;
+            border: 1px solid var(--border-light); transition: all var(--transition-normal);
+            cursor: pointer; position: relative;
+        }
+        .book-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--accent-primary); }
+        .book-card-img { width: 100%; height: 220px; overflow: hidden; }
+        .book-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-slow); }
+        .book-card:hover .book-card-img img { transform: scale(1.05); }
+        .placeholder-img { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 48px; }
+        .book-card-body { padding: 16px; }
+        .book-card-title {
+            font-size: 14px; font-weight: 700; margin-bottom: 4px; line-height: 1.4;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+        }
+        .book-card-author { font-size: 13px; color: var(--text-tertiary); margin-bottom: 8px; }
+        .book-card-meta { display: flex; gap: 6px; flex-wrap: wrap; }
+        .book-tag {
+            padding: 3px 10px; border-radius: var(--radius-full); font-size: 11px; font-weight: 600;
+            background: rgba(79, 70, 229, 0.1); color: var(--accent-primary);
+        }
+        .book-popular-badge {
+            position: absolute; top: 12px; left: 12px; padding: 4px 12px;
+            border-radius: var(--radius-full); font-size: 11px; font-weight: 700;
+            color: white; background: var(--accent-gradient-3); z-index: 2;
+        }
+        .book-new-badge {
+            position: absolute; top: 12px; left: 12px; padding: 4px 12px;
+            border-radius: var(--radius-full); font-size: 11px; font-weight: 700;
+            color: white; background: var(--accent-gradient-4); z-index: 2;
+        }
+
+        /* QUOTES */
+        .quotes-section { padding: 20px 0 40px; }
+        .quote-card {
+            background: var(--accent-gradient); border-radius: var(--radius-xl); padding: 48px;
+            text-align: center; color: white; position: relative; overflow: hidden;
+        }
+        .quote-card::before {
+            content: '"'; position: absolute; top: -30px; left: 30px;
+            font-size: 180px; opacity: 0.1; font-family: Georgia, serif;
+        }
+        .quote-text {
+            font-size: clamp(18px, 2.5vw, 26px); font-weight: 600;
+            line-height: 1.6; margin-bottom: 20px; position: relative; z-index: 1;
+        }
+        .quote-author { font-size: 15px; opacity: 0.85; position: relative; z-index: 1; }
+
+        /* TOP CARDS (Home) */
+        .top-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 20px 0; }
+        .top-card {
+            background: var(--bg-card); border-radius: var(--radius-xl); padding: 24px;
+            text-align: center; border: 1px solid var(--border-light);
+            transition: all var(--transition-normal);
+        }
+        .top-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .top-card-rank {
+            width: 36px; height: 36px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; font-weight: 800;
+            font-size: 14px; margin: 0 auto 12px; color: white;
+        }
+        .top-card:nth-child(1) .top-card-rank { background: var(--podium-1); color: var(--podium-1-text); }
+        .top-card:nth-child(2) .top-card-rank { background: var(--podium-2); color: var(--podium-2-text); }
+        .top-card:nth-child(3) .top-card-rank { background: var(--podium-3); color: var(--podium-3-text); }
+        .top-card-avatar {
+            width: 60px; height: 60px; border-radius: 50%; background: var(--accent-gradient);
+            display: flex; align-items: center; justify-content: center; color: white;
+            font-size: 22px; font-weight: 700; margin: 0 auto 12px;
+        }
+        .top-card-name { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+        .top-card-count { font-size: 13px; color: var(--text-tertiary); }
+
+        /* ARTICLES */
+        .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 20px 0 40px; }
+        .article-card {
+            background: var(--bg-card); border-radius: var(--radius-xl); overflow: hidden;
+            border: 1px solid var(--border-light); transition: all var(--transition-normal); cursor: pointer;
+        }
+        .article-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .article-card-img { width: 100%; height: 180px; object-fit: cover; }
+        .article-card-body { padding: 20px; }
+        .article-card-date { font-size: 12px; color: var(--accent-primary); font-weight: 600; margin-bottom: 8px; }
+        .article-card-title {
+            font-size: 15px; font-weight: 700; margin-bottom: 8px; line-height: 1.4;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+        }
+        .article-card-excerpt {
+            font-size: 13px; color: var(--text-tertiary); line-height: 1.6;
+            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+        }
+
+        /* KOLEKSI */
+        .koleksi-tabs {
+            display: flex; gap: 8px; margin-bottom: 32px;
+            flex-wrap: wrap; justify-content: center;
+        }
+        .koleksi-tab {
+            padding: 10px 24px; border-radius: var(--radius-full);
+            border: 1px solid var(--border-color); background: var(--bg-card);
+            color: var(--text-secondary); font-weight: 600; font-size: 14px;
+            cursor: pointer; transition: all var(--transition-fast);
+        }
+        .koleksi-tab:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+        .koleksi-tab.active { background: var(--accent-gradient); color: white; border-color: transparent; }
+        .rak-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-bottom: 40px; }
+        .rak-card {
+            background: var(--bg-card); border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg); padding: 24px; text-align: center;
+            cursor: pointer; transition: all var(--transition-normal);
+        }
+        .rak-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--accent-primary); }
+        .rak-card.active { border-color: var(--accent-primary); background: rgba(79, 70, 229, 0.05); }
+        .rak-number {
+            font-size: 28px; font-weight: 800;
+            background: var(--accent-gradient); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 4px;
+        }
+        .rak-count { font-size: 13px; color: var(--text-tertiary); }
+        .rak-filter { display: none; margin-bottom: 24px; }
+        .rak-filter.active { display: block; animation: fadeInUp 0.3s ease; }
+        .rak-filter-header {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 16px; flex-wrap: wrap; gap: 12px;
+        }
+        .back-btn {
+            display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px;
+            border-radius: var(--radius-full); border: 1px solid var(--border-color);
+            background: var(--bg-card); color: var(--text-secondary); font-weight: 600;
+            font-size: 13px; cursor: pointer; transition: all var(--transition-fast);
+        }
+        .back-btn:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+
+        /* LEADERBOARD PODIUM - SIDE BY SIDE */
+        .podium-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+        .podium-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-xl);
+            padding: 24px;
+        }
+        .podium-section-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+        }
+        .podium-section-title i { color: var(--accent-primary); }
+        .podium-container {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 12px;
+            padding: 20px 0 0;
+        }
+        .podium-item { text-align: center; transition: all var(--transition-normal); }
+        .podium-item:hover { transform: translateY(-6px); }
+        .podium-avatar {
+            width: 52px; height: 52px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 20px; font-weight: 700;
+            margin: 0 auto 8px; background: var(--accent-gradient); position: relative;
+        }
+        .podium-item:nth-child(2) .podium-avatar {
+            width: 64px; height: 64px; font-size: 24px;
+            box-shadow: 0 4px 20px rgba(251, 191, 36, 0.4);
+        }
+        .podium-crown { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); font-size: 20px; }
+        .podium-name { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+        .podium-count { font-size: 11px; color: var(--text-tertiary); margin-bottom: 8px; }
+        .podium-bar {
+            width: 80px; border-radius: var(--radius-md) var(--radius-md) 0 0;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; font-weight: 800; color: white;
+        }
+        .podium-item:nth-child(1) .podium-bar { background: var(--podium-2); height: 80px; color: var(--podium-2-text); }
+        .podium-item:nth-child(2) .podium-bar { background: var(--podium-1); height: 110px; color: var(--podium-1-text); }
+        .podium-item:nth-child(3) .podium-bar { background: var(--podium-3); height: 56px; color: var(--podium-3-text); }
+
+        /* CHARTS */
+        .leaderboard-charts {
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 24px; padding: 20px 0 60px;
+        }
+        .chart-card {
+            background: var(--bg-card); border-radius: var(--radius-xl);
+            padding: 24px; border: 1px solid var(--border-light);
+        }
+        .chart-card-title {
+            font-size: 15px; font-weight: 700; margin-bottom: 20px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .chart-card-title i { color: var(--accent-primary); }
+        .bar-chart { display: flex; flex-direction: column; gap: 12px; }
+        .bar-item { display: flex; align-items: center; gap: 12px; }
+        .bar-label {
+            font-size: 13px; font-weight: 500; color: var(--text-secondary);
+            min-width: 100px; text-align: right; white-space: nowrap;
+            overflow: hidden; text-overflow: ellipsis;
+        }
+        .bar-track {
+            flex: 1; height: 24px; background: var(--bg-tertiary);
+            border-radius: var(--radius-full); overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%; border-radius: var(--radius-full);
+            background: var(--accent-gradient);
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex; align-items: center; justify-content: flex-end;
+            padding-right: 8px; min-width: 0;
+        }
+        .bar-value { font-size: 11px; font-weight: 700; color: white; white-space: nowrap; }
+
+        /* PROFIL */
+        .profil-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; padding: 40px 0 60px; }
+        .profil-card {
+            background: var(--bg-card); border-radius: var(--radius-xl); padding: 32px;
+            border: 1px solid var(--border-light); transition: all var(--transition-normal);
+        }
+        .profil-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .profil-card.full-width { grid-column: 1 / -1; }
+        .profil-card-title {
+            font-size: 20px; font-weight: 700; margin-bottom: 16px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .profil-card-title i { color: var(--accent-primary); font-size: 22px; }
+        .profil-card p, .profil-card li { font-size: 15px; color: var(--text-secondary); line-height: 1.8; }
+        .profil-card ul { list-style: none; padding: 0; }
+        .profil-card ul li { padding: 8px 0 8px 24px; position: relative; }
+        .profil-card ul li::before {
+            content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+            width: 8px; height: 8px; border-radius: 50%; background: var(--accent-gradient);
+        }
+        .profil-img { width: 100%; border-radius: var(--radius-lg); object-fit: cover; margin-top: 16px; max-height: 400px; }
+
+        /* DOKUMENTASI */
+        .dok-tabs { display: flex; gap: 8px; margin-bottom: 32px; justify-content: center; }
+        .dok-tab {
+            padding: 12px 28px; border-radius: var(--radius-full);
+            border: 2px solid var(--border-color); background: var(--bg-card);
+            color: var(--text-secondary); font-weight: 600; font-size: 14px;
+            cursor: pointer; transition: all var(--transition-fast);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .dok-tab:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+        .dok-tab.active { background: var(--accent-gradient); color: white; border-color: transparent; }
+        .dok-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px; padding: 20px 0 60px;
+        }
+        .dok-item {
+            background: var(--bg-card); border-radius: var(--radius-xl); overflow: hidden;
+            border: 1px solid var(--border-light); transition: all var(--transition-normal); cursor: pointer;
+        }
+        .dok-item:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+        .dok-item-img { width: 100%; height: 200px; object-fit: cover; }
+        .dok-item-body { padding: 16px; }
+        .dok-item-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+        .dok-item-desc {
+            font-size: 13px; color: var(--text-tertiary); line-height: 1.5;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+        }
+
+        /* LAYANAN */
+        .layanan-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px; padding: 40px 0 60px;
+        }
+        .layanan-card {
+            background: var(--bg-card); border-radius: var(--radius-xl); padding: 32px;
+            border: 1px solid var(--border-light); transition: all var(--transition-normal);
+            cursor: pointer; text-align: center; position: relative; overflow: hidden;
+        }
+        .layanan-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: var(--accent-gradient); transform: scaleX(0);
+            transition: transform var(--transition-normal);
+        }
+        .layanan-card:hover::before { transform: scaleX(1); }
+        .layanan-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+        .layanan-icon {
+            width: 64px; height: 64px; border-radius: var(--radius-lg);
+            background: rgba(79, 70, 229, 0.1); display: flex; align-items: center;
+            justify-content: center; font-size: 28px; color: var(--accent-primary);
+            margin: 0 auto 16px; transition: all var(--transition-fast);
+        }
+        .layanan-card:hover .layanan-icon { background: var(--accent-gradient); color: white; transform: scale(1.1); }
+        .layanan-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+        .layanan-desc { font-size: 14px; color: var(--text-tertiary); line-height: 1.6; }
+
+        /* MODAL */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0; background: var(--bg-overlay);
+            backdrop-filter: blur(8px); z-index: 2000; align-items: center;
+            justify-content: center; padding: 20px;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal {
+            background: var(--bg-card); border-radius: var(--radius-xl); max-width: 600px;
+            width: 100%; max-height: 85vh; overflow-y: auto; animation: slideInModal 0.3s ease;
+            border: 1px solid var(--border-light); box-shadow: var(--shadow-xl);
+        }
+        .modal-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 20px 24px; border-bottom: 1px solid var(--border-light);
+            position: sticky; top: 0; background: var(--bg-card); z-index: 1;
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        }
+        .modal-title { font-size: 18px; font-weight: 700; }
+        .modal-close {
+            width: 36px; height: 36px; border-radius: 50%; border: none;
+            background: var(--bg-tertiary); color: var(--text-secondary); cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; transition: all var(--transition-fast);
+        }
+        .modal-close:hover { background: #ef4444; color: white; }
+        .modal-body { padding: 24px; }
+        .modal-body img { width: 100%; border-radius: var(--radius-md); margin-bottom: 16px; }
+        .modal-detail-row { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border-light); }
+        .modal-detail-label { font-size: 13px; font-weight: 600; color: var(--text-tertiary); min-width: 120px; }
+        .modal-detail-value { font-size: 14px; color: var(--text-primary); }
+        .modal-desc { margin-top: 16px; font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
+        .modal-link-btn {
+            display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px;
+            border-radius: var(--radius-full); background: var(--accent-gradient);
+            color: white; font-weight: 600; font-size: 14px; text-decoration: none;
+            margin-top: 20px; transition: all var(--transition-fast); border: none; cursor: pointer;
+        }
+        .modal-link-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4); }
+
+        /* FOOTER */
+        .footer {
+            background: var(--bg-tertiary); border-top: 1px solid var(--border-light);
+            padding: 40px 0 20px; margin-top: 40px;
+        }
+        .footer-inner { max-width: 1400px; margin: 0 auto; padding: 0 24px; text-align: center; }
+        .footer-brand { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 16px; }
+        .footer-brand-name { font-size: 16px; font-weight: 700; color: var(--text-primary); }
+        .footer-text { font-size: 13px; color: var(--text-tertiary); margin-bottom: 8px; }
+        .footer-socials { display: flex; gap: 12px; justify-content: center; margin: 16px 0; }
+        .footer-socials a {
+            width: 40px; height: 40px; border-radius: 50%; background: var(--bg-card);
+            border: 1px solid var(--border-color); display: flex; align-items: center;
+            justify-content: center; color: var(--text-secondary); text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+        .footer-socials a:hover { background: var(--accent-gradient); color: white; border-color: transparent; transform: translateY(-2px); }
+
+        /* BACK TO TOP */
+        .back-to-top {
+            position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px;
+            border-radius: 50%; background: var(--accent-gradient); color: white;
+            border: none; cursor: pointer; display: flex; align-items: center;
+            justify-content: center; font-size: 18px; z-index: 100;
+            opacity: 0; transform: translateY(20px); transition: all var(--transition-normal);
+            box-shadow: var(--shadow-lg);
+        }
+        .back-to-top.visible { opacity: 1; transform: translateY(0); }
+        .back-to-top:hover { transform: translateY(-4px); box-shadow: var(--shadow-xl); }
+
+        /* PARTICLES */
+        .particles-bg { position: fixed; inset: 0; pointer-events: none; z-index: -1; overflow: hidden; }
+        .particle {
+            position: absolute; width: 4px; height: 4px;
+            background: var(--accent-primary); border-radius: 50%; opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* LOADING OVERLAY */
+        .loading-overlay {
+            position: fixed; inset: 0; background: var(--bg-primary);
+            z-index: 9999; display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+        .loading-overlay.hidden { opacity: 0; pointer-events: none; }
+        .loading-spinner {
+            width: 48px; height: 48px; border: 4px solid var(--border-color);
+            border-top-color: var(--accent-primary); border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text { margin-top: 16px; color: var(--text-secondary); font-size: 14px; }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .stats-grid { grid-template-columns: repeat(3, 1fr); }
+            .books-grid { grid-template-columns: repeat(2, 1fr); }
+            .leaderboard-charts { grid-template-columns: 1fr; }
+            .profil-grid { grid-template-columns: 1fr; }
+            .articles-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-links { display: none; }
+            .hamburger { display: flex; }
+            .banner-slider { height: 320px; border-radius: var(--radius-lg); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .stat-card { padding: 20px; }
+            .stat-number { font-size: 24px; }
+            .books-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .book-card-img { height: 160px; }
+            .top-grid { grid-template-columns: 1fr; }
+            .articles-grid { grid-template-columns: 1fr; }
+            .dok-grid { grid-template-columns: 1fr; }
+            .layanan-grid { grid-template-columns: 1fr; }
+            .quote-card { padding: 32px 24px; }
+            .navbar-title small { display: none; }
+            .rak-grid { grid-template-columns: repeat(3, 1fr); }
+            .podium-row { grid-template-columns: 1fr; gap: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .books-grid { grid-template-columns: 1fr; }
+            .banner-slider { height: 260px; border-radius: var(--radius-md); }
+            .container { padding: 0 16px; }
+            .rak-grid { grid-template-columns: repeat(2, 1fr); }
+            .koleksi-tabs { gap: 4px; }
+            .koleksi-tab { padding: 8px 16px; font-size: 12px; }
+        }
     </style>
 </head>
 <body>
-    <div class="par" id="par"></div>
-    <nav class="nav"><div class="nav-i">
-        <a class="nav-b" onclick="go('home')"><div class="nav-lp" id="lp"><img id="lg" src="" style="display:none"><span id="lt">SL</span></div><div class="nav-tp">Perpustakaan SMA Katolik St. Louis 2<small>Selamat Datang</small></div></a>
-        <ul class="nav-ll"><li><a class="act" data-p="home" onclick="go('home')"><i class="fas fa-home"></i> Home</a></li><li><a data-p="koleksi" onclick="go('koleksi')"><i class="fas fa-book"></i> Koleksi</a></li><li><a data-p="leaderboard" onclick="go('leaderboard')"><i class="fas fa-trophy"></i> Leaderboard</a></li><li><a data-p="profil" onclick="go('profil')"><i class="fas fa-info-circle"></i> Profil</a></li><li><a data-p="dokumentasi" onclick="go('dokumentasi')"><i class="fas fa-camera"></i> Dokumentasi</a></li><li><a data-p="layanan" onclick="go('layanan')"><i class="fas fa-concierge-bell"></i> Layanan</a></li></ul>
-        <div><button class="thm" onclick="tThm()"><i class="fas fa-sun"></i></button></div>
-    </div></nav>
+    <div class="particles-bg" id="particles"></div>
 
-    <main class="main">
-        <section class="sec on" id="s-home">
-            <div class="con">
-                <div class="bns" id="bns"><div class="bnt" id="bnt"></div><button class="bar p" onclick="pB()"><i class="fas fa-chevron-left"></i></button><button class="bar n" onclick="nB()"><i class="fas fa-chevron-right"></i></button><div class="bnav" id="bnav"></div></div>
-                <div class="stg">
-                    <div class="stc"><div class="sti"><i class="fas fa-book"></i></div><div class="stn" id="sk">0</div><div class="stl">Total Koleksi</div></div>
-                    <div class="stc"><div class="sti"><i class="fas fa-users"></i></div><div class="stn" id="sp">0</div><div class="stl">Total Pengunjung</div></div>
-                    <div class="stc"><div class="sti"><i class="fas fa-hand-holding-heart"></i></div><div class="stn" id="sv">0</div><div class="stl">Total Peminjam</div></div>
+    <!-- LOADING OVERLAY -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Memuat data perpustakaan...</div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a class="navbar-brand" onclick="navigateTo('home')">
+                <div class="navbar-logo-placeholder" id="navLogoPlaceholder">
+                    <img id="navLogo" src="" alt="Logo" style="display:none;" onerror="this.style.display='none';">
+                    <span id="navLogoText">SL</span>
                 </div>
-                <div class="bksec"><div class="bkhd"><div class="bkt"><i class="fas fa-fire"></i> Buku Populer</div></div><div class="bkg" id="pb"></div></div>
-                <div class="bksec"><div class="bkhd"><div class="bkt"><i class="fas fa-sparkles"></i> Buku Baru</div></div><div class="bkg" id="nb"></div></div>
-                <div class="qsec"><div class="qcard"><div class="qtxt" id="qt">"Buku adalah jendela dunia."</div><div class="qauth" id="qa">— Tim Perpustakaan</div></div></div>
-                <div style="padding-top:40px"><div class="bkhd"><div class="bkt"><i class="fas fa-star"></i> Top Pengunjung</div></div><div class="tpg" id="tv"></div></div>
-                <div><div class="bkhd"><div class="bkt"><i class="fas fa-medal"></i> Top Peminjam</div></div><div class="tpg" id="tb"></div></div>
-                <div style="padding-top:40px"><div class="bkhd"><div class="bkt"><i class="fas fa-newspaper"></i> Artikel Terbaru</div></div><div class="arg" id="ag"></div></div>
+                <div class="navbar-title">
+                    Perpustakaan SMA Katolik St. Louis 2
+                    <small>Selamat Datang</small>
+                </div>
+            </a>
+            <ul class="navbar-links" id="navLinks">
+                <li><a class="active" data-page="home" onclick="navigateTo('home')"><i class="fas fa-home"></i> Home</a></li>
+                <li><a data-page="koleksi" onclick="navigateTo('koleksi')"><i class="fas fa-book"></i> Koleksi</a></li>
+                <li><a data-page="leaderboard" onclick="navigateTo('leaderboard')"><i class="fas fa-trophy"></i> Leaderboard</a></li>
+                <li><a data-page="profil" onclick="navigateTo('profil')"><i class="fas fa-info-circle"></i> Profil</a></li>
+                <li><a data-page="dokumentasi" onclick="navigateTo('dokumentasi')"><i class="fas fa-camera"></i> Dokumentasi</a></li>
+                <li><a data-page="layanan" onclick="navigateTo('layanan')"><i class="fas fa-concierge-bell"></i> Layanan</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()"><i class="fas fa-sun"></i></button>
+                <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a class="active" data-page="home" onclick="navigateTo('home'); closeMobileMenu()"><i class="fas fa-home"></i> Home</a>
+        <a data-page="koleksi" onclick="navigateTo('koleksi'); closeMobileMenu()"><i class="fas fa-book"></i> Koleksi</a>
+        <a data-page="leaderboard" onclick="navigateTo('leaderboard'); closeMobileMenu()"><i class="fas fa-trophy"></i> Leaderboard</a>
+        <a data-page="profil" onclick="navigateTo('profil'); closeMobileMenu()"><i class="fas fa-info-circle"></i> Profil</a>
+        <a data-page="dokumentasi" onclick="navigateTo('dokumentasi'); closeMobileMenu()"><i class="fas fa-camera"></i> Dokumentasi</a>
+        <a data-page="layanan" onclick="navigateTo('layanan'); closeMobileMenu()"><i class="fas fa-concierge-bell"></i> Layanan</a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- ===== HOME ===== -->
+        <section class="section active" id="section-home">
+            <div class="container">
+                <div class="banner-slider" id="bannerSlider">
+                    <div class="banner-track" id="bannerTrack">
+                        <div class="banner-slide">
+                            <div class="banner-overlay">
+                                <div class="banner-content">
+                                    <h2>Selamat Datang di Perpustakaan</h2>
+                                    <p>Jelajahi ribuan koleksi buku dan temukan ilmu pengetahuan yang tak terbatas</p>
+                                    <button class="banner-btn" onclick="navigateTo('koleksi')"><i class="fas fa-search"></i> Jelajahi Koleksi</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="banner-slide">
+                            <div class="banner-overlay" style="background: linear-gradient(135deg, rgba(6,182,212,0.7) 0%, rgba(59,130,246,0.5) 100%);">
+                                <div class="banner-content">
+                                    <h2>Baca Lebih Banyak, Tumbuh Lebih Banyak</h2>
+                                    <p>Setiap halaman buku adalah jendela menuju dunia baru</p>
+                                    <button class="banner-btn" onclick="navigateTo('koleksi')"><i class="fas fa-book-open"></i> Mulai Membaca</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="banner-slide">
+                            <div class="banner-overlay" style="background: linear-gradient(135deg, rgba(16,185,129,0.7) 0%, rgba(6,182,212,0.5) 100%);">
+                                <div class="banner-content">
+                                    <h2>Perpustakaan Digital Masa Kini</h2>
+                                    <p>Akses koleksi buku dengan mudah melalui platform digital kami</p>
+                                    <button class="banner-btn" onclick="navigateTo('layanan')"><i class="fas fa-laptop"></i> Layanan Digital</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="banner-arrow prev" onclick="prevBanner()"><i class="fas fa-chevron-left"></i></button>
+                    <button class="banner-arrow next" onclick="nextBanner()"><i class="fas fa-chevron-right"></i></button>
+                    <div class="banner-nav" id="bannerNav"></div>
+                </div>
+            </div>
+
+            <div class="container">
+                <!-- STATS -->
+                <div class="stats-grid">
+                    <div class="stat-card animate-on-scroll">
+                        <div class="stat-icon"><i class="fas fa-book"></i></div>
+                        <div class="stat-number" id="statKoleksi">0</div>
+                        <div class="stat-label">Total Koleksi</div>
+                    </div>
+                    <div class="stat-card animate-on-scroll" style="transition-delay: 0.1s;">
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <div class="stat-number" id="statPengunjung">0</div>
+                        <div class="stat-label">Total Pengunjung</div>
+                    </div>
+                    <div class="stat-card animate-on-scroll" style="transition-delay: 0.2s;">
+                        <div class="stat-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                        <div class="stat-number" id="statPeminjam">0</div>
+                        <div class="stat-label">Total Peminjam</div>
+                    </div>
+                </div>
+
+                <!-- POPULAR BOOKS -->
+                <div class="books-section animate-on-scroll">
+                    <div class="books-section-header">
+                        <div class="books-section-title"><i class="fas fa-fire"></i> Buku Populer</div>
+                        <button class="see-all-btn" onclick="navigateTo('koleksi')"><i class="fas fa-arrow-right"></i> Lihat Semua</button>
+                    </div>
+                    <div class="books-grid" id="popularBooksGrid"></div>
+                </div>
+
+                <!-- NEW BOOKS -->
+                <div class="books-section animate-on-scroll">
+                    <div class="books-section-header">
+                        <div class="books-section-title"><i class="fas fa-sparkles"></i> Buku Baru</div>
+                        <button class="see-all-btn" onclick="navigateTo('koleksi')"><i class="fas fa-arrow-right"></i> Lihat Semua</button>
+                    </div>
+                    <div class="books-grid" id="newBooksGrid"></div>
+                </div>
+
+                <!-- QUOTES -->
+                <div class="quotes-section animate-on-scroll">
+                    <div class="quote-card">
+                        <div class="quote-text" id="quoteText">"Buku adalah jendela dunia. Baca, pelajari, dan rasakan keajaibannya."</div>
+                        <div class="quote-author" id="quoteAuthor">— Tim Perpustakaan St. Louis 2</div>
+                    </div>
+                </div>
+
+                <!-- TOP PENGUNJUNG -->
+                <div class="animate-on-scroll" style="padding-top: 40px;">
+                    <div class="books-section-header">
+                        <div class="books-section-title"><i class="fas fa-star"></i> Top Pengunjung</div>
+                    </div>
+                    <div class="top-grid" id="topVisitorsGrid"></div>
+                </div>
+
+                <!-- TOP PEMINJAM -->
+                <div class="animate-on-scroll">
+                    <div class="books-section-header">
+                        <div class="books-section-title"><i class="fas fa-medal"></i> Top Peminjam</div>
+                    </div>
+                    <div class="top-grid" id="topBorrowersGrid"></div>
+                </div>
+
+                <!-- ARTICLES -->
+                <div class="animate-on-scroll" style="padding-top: 40px;">
+                    <div class="books-section-header">
+                        <div class="books-section-title"><i class="fas fa-newspaper"></i> Artikel Terbaru</div>
+                    </div>
+                    <div class="articles-grid" id="articlesGrid"></div>
+                </div>
             </div>
         </section>
 
-        <section class="sec" id="s-koleksi">
-            <div class="con">
-                <div style="text-align:center;margin-bottom:48px;padding-top:40px"><div class="sec-b"><i class="fas fa-book-open"></i> Koleksi Buku</div><h1 class="sec-t">Koleksi Perpustakaan</h1></div>
-                <div class="ktabs"><button class="ktab act" onclick="sKT('rak',this)">📚 Rak Klasifikasi</button><button class="ktab" onclick="sKT('kat',this)">🏷️ Kategori</button></div>
-                <div id="rv"><div class="rg" id="rg"></div></div>
-                <div id="kv" style="display:none"><div class="rg" id="kg"></div></div>
+        <!-- ===== KOLEKSI ===== -->
+        <section class="section" id="section-koleksi">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <div class="section-badge"><i class="fas fa-book-open"></i> Koleksi Buku</div>
+                    <h1 class="section-title">Koleksi Perpustakaan</h1>
+                    <p class="section-subtitle">Jelajahi koleksi buku kami berdasarkan rak klasifikasi atau kategori</p>
+                </div>
+                <div class="koleksi-tabs">
+                    <button class="koleksi-tab active" data-type="rak" onclick="switchKoleksiTab('rak')"><i class="fas fa-layer-group"></i> Rak Klasifikasi</button>
+                    <button class="koleksi-tab" data-type="kategori" onclick="switchKoleksiTab('kategori')"><i class="fas fa-tags"></i> Kategori</button>
+                </div>
+                <div id="rakView">
+                    <div class="rak-grid" id="rakGrid"></div>
+                    <div class="rak-filter" id="rakFilter">
+                        <div class="rak-filter-header">
+                            <button class="back-btn" onclick="closeRakFilter()"><i class="fas fa-arrow-left"></i> Kembali</button>
+                            <h3 id="rakFilterTitle" style="font-size: 20px; font-weight: 700;"></h3>
+                        </div>
+                        <div class="books-grid" id="rakBooksGrid"></div>
+                    </div>
+                </div>
+                <div id="kategoriView" style="display:none;">
+                    <div class="rak-grid" id="kategoriGrid"></div>
+                    <div class="rak-filter" id="kategoriFilter">
+                        <div class="rak-filter-header">
+                            <button class="back-btn" onclick="closeKategoriFilter()"><i class="fas fa-arrow-left"></i> Kembali</button>
+                            <h3 id="kategoriFilterTitle" style="font-size: 20px; font-weight: 700;"></h3>
+                        </div>
+                        <div class="books-grid" id="kategoriBooksGrid"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="sec" id="s-leaderboard">
-            <div class="con">
-                <div style="text-align:center;margin-bottom:48px;padding-top:40px"><div class="sec-b"><i class="fas fa-trophy"></i> Leaderboard</div><h1 class="sec-t">Papan Peringkat</h1></div>
-                <div class="pro"><div class="ps"><div class="pst"><i class="fas fa-users"></i> Top 3 Pengunjung</div><div class="pc" id="vp"></div></div><div class="ps"><div class="pst"><i class="fas fa-hand-holding-heart"></i> Top 3 Peminjam</div><div class="pc" id="bp"></div></div></div>
-                <div class="lbc"><div class="chc"><div class="cht"><i class="fas fa-chart-bar"></i> Kunjungan per Kategori</div><div class="bch" id="vbc"></div></div><div class="chc"><div class="cht"><i class="fas fa-layer-group"></i> Koleksi per Rak</div><div class="bch" id="cb"></div></div></div>
+        <!-- ===== LEADERBOARD ===== -->
+        <section class="section" id="section-leaderboard">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <div class="section-badge"><i class="fas fa-trophy"></i> Leaderboard</div>
+                    <h1 class="section-title">Papan Peringkat</h1>
+                    <p class="section-subtitle">Statistik pengunjung dan peminjam perpustakaan</p>
+                </div>
+
+                <!-- PODIUM SIDE BY SIDE -->
+                <div class="podium-row animate-on-scroll">
+                    <div class="podium-section">
+                        <div class="podium-section-title"><i class="fas fa-users"></i> Top 3 Pengunjung</div>
+                        <div class="podium-container" id="visitorPodium"></div>
+                    </div>
+                    <div class="podium-section">
+                        <div class="podium-section-title"><i class="fas fa-hand-holding-heart"></i> Top 3 Peminjam</div>
+                        <div class="podium-container" id="borrowerPodium"></div>
+                    </div>
+                </div>
+
+                <div class="leaderboard-charts">
+                    <div class="chart-card animate-on-scroll">
+                        <div class="chart-card-title"><i class="fas fa-chart-bar"></i> Total Kunjungan per Kategori</div>
+                        <div class="bar-chart" id="visitByCategory"></div>
+                    </div>
+                    <div class="chart-card animate-on-scroll">
+                        <div class="chart-card-title"><i class="fas fa-chart-line"></i> Total Kunjungan per Tahun</div>
+                        <div class="bar-chart" id="visitByYear"></div>
+                    </div>
+                    <div class="chart-card animate-on-scroll">
+                        <div class="chart-card-title"><i class="fas fa-chart-pie"></i> Total Peminjaman per Kategori</div>
+                        <div class="bar-chart" id="borrowByCategory"></div>
+                    </div>
+                    <div class="chart-card animate-on-scroll">
+                        <div class="chart-card-title"><i class="fas fa-calendar-alt"></i> Total Peminjaman per Tahun</div>
+                        <div class="bar-chart" id="borrowByYear"></div>
+                    </div>
+                    <div class="chart-card animate-on-scroll" style="grid-column: 1 / -1;">
+                        <div class="chart-card-title"><i class="fas fa-layer-group"></i> Total Koleksi per Rak Klasifikasi</div>
+                        <div class="bar-chart" id="collectionByRak"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="sec" id="s-profil">
-            <div class="con">
-                <div style="text-align:center;margin-bottom:48px;padding-top:40px"><div class="sec-b"><i class="fas fa-info-circle"></i> Profil</div><h1 class="sec-t">Profil Perpustakaan</h1></div>
-                <div class="prg"><div class="prc"><div class="prt"><i class="fas fa-eye"></i> Visi</div><p>Mewujudkan perpustakaan pusat literasi & karakter siswa berlandaskan nilai Katolik.</p></div><div class="prc"><div class="prt"><i class="fas fa-sitemap"></i> Struktur</div><div id="so" style="margin-top:16px;padding:32px;background:var(--bg);border-radius:var(--r-l);text-align:center;color:var(--txt3)"><i class="fas fa-sitemap" style="font-size:48px;margin-bottom:12px;display:block"></i>Struktur Organisasi</div></div></div>
+        <!-- ===== PROFIL ===== -->
+        <section class="section" id="section-profil">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <div class="section-badge"><i class="fas fa-info-circle"></i> Profil</div>
+                    <h1 class="section-title">Profil Perpustakaan</h1>
+                    <p class="section-subtitle">Mengenal lebih dekat perpustakaan SMA Katolik St. Louis 2</p>
+                </div>
+                <div class="profil-grid">
+                    <div class="profil-card animate-on-scroll">
+                        <div class="profil-card-title"><i class="fas fa-eye"></i> Visi</div>
+                        <p>Mewujudkan perpustakaan yang menjadi pusat literasi, inovasi, dan pengembangan karakter siswa SMA Katolik St. Louis 2 yang berlandaskan nilai-nilai Katolik.</p>
+                    </div>
+                    <div class="profil-card animate-on-scroll">
+                        <div class="profil-card-title"><i class="fas fa-bullseye"></i> Misi</div>
+                        <ul>
+                            <li>Menyediakan koleksi buku yang berkualitas dan terkini</li>
+                            <li>Menciptakan lingkungan membaca yang nyaman dan inspiratif</li>
+                            <li>Mengembangkan budaya literasi di kalangan siswa</li>
+                            <li>Memanfaatkan teknologi digital untuk layanan perpustakaan</li>
+                            <li>Menyelenggarakan program literasi yang inovatif</li>
+                        </ul>
+                    </div>
+                    <div class="profil-card animate-on-scroll">
+                        <div class="profil-card-title"><i class="fas fa-gavel"></i> Peraturan Perpustakaan</div>
+                        <ul>
+                            <li>Membawa kartu perpustakaan saat meminjam buku</li>
+                            <li>Mengembalikan buku tepat pada waktunya</li>
+                            <li>Menjaga kebersihan dan ketertiban perpustakaan</li>
+                            <li>Dilarang mencorat-coret atau merusak buku</li>
+                            <li>Menghemat penggunaan listrik dan fasilitas</li>
+                            <li>Berdiskusi menggunakan volume suara yang rendah</li>
+                        </ul>
+                    </div>
+                    <div class="profil-card animate-on-scroll">
+                        <div class="profil-card-title"><i class="fas fa-sitemap"></i> Struktur Organisasi</div>
+                        <p>Kepala Perpustakaan, Koordinator Perpustakaan, Staf Perpustakaan, dan Sukarelawan Siswa.</p>
+                        <div style="margin-top:16px;padding:32px;background:var(--bg-tertiary);border-radius:var(--radius-lg);text-align:center;color:var(--text-tertiary);">
+                            <i class="fas fa-sitemap" style="font-size:48px;margin-bottom:12px;display:block;"></i>
+                            <span>Struktur Organisasi</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="sec" id="s-dokumentasi">
-            <div class="con">
-                <div style="text-align:center;margin-bottom:48px;padding-top:40px"><div class="sec-b"><i class="fas fa-camera"></i> Dokumentasi</div><h1 class="sec-t">Kegiatan</h1></div>
-                <div class="doktabs" style="display:flex;gap:8px;justify-content:center;margin-bottom:32px"><button class="ktab act" onclick="sDT('foto',this)">📷 Foto</button><button class="ktab" onclick="sDT('artikel',this)">📰 Artikel</button></div>
-                <div class="dokg" id="dg"></div>
+        <!-- ===== DOKUMENTASI ===== -->
+        <section class="section" id="section-dokumentasi">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <div class="section-badge"><i class="fas fa-camera"></i> Dokumentasi</div>
+                    <h1 class="section-title">Dokumentasi Kegiatan</h1>
+                    <p class="section-subtitle">Momen-momen berharga dari kegiatan perpustakaan</p>
+                </div>
+                <div class="dok-tabs">
+                    <button class="dok-tab active" data-type="foto" onclick="switchDokTab('foto')"><i class="fas fa-camera"></i> Foto Kegiatan</button>
+                    <button class="dok-tab" data-type="artikel" onclick="switchDokTab('artikel')"><i class="fas fa-newspaper"></i> Artikel</button>
+                </div>
+                <div class="dok-grid" id="dokGrid"></div>
             </div>
         </section>
 
-        <section class="sec" id="s-layanan">
-            <div class="con">
-                <div style="text-align:center;margin-bottom:48px;padding-top:40px"><div class="sec-b"><i class="fas fa-concierge-bell"></i> Layanan</div><h1 class="sec-t">Layanan</h1></div>
-                <div class="layg" id="layg"></div>
+        <!-- ===== LAYANAN ===== -->
+        <section class="section" id="section-layanan">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <div class="section-badge"><i class="fas fa-concierge-bell"></i> Layanan</div>
+                    <h1 class="section-title">Layanan Perpustakaan</h1>
+                    <p class="section-subtitle">Berbagai layanan yang kami sediakan untuk kebutuhan Anda</p>
+                </div>
+                <div class="layanan-grid" id="layananGrid"></div>
             </div>
         </section>
     </main>
 
-    <footer class="ft"><div class="fti"><div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:16px"><div class="nav-lp" style="width:36px;height:36px;font-size:14px"><span>SL</span></div><div style="font-size:16px;font-weight:700;color:var(--txt)">Perpustakaan SMA Katolik St. Louis 2</div></div><p>Membangun generasi literat berlandaskan iman & ilmu.</p><p style="font-size:12px;margin-top:16px">© 2025 Perpustakaan SMA Katolik St. Louis 2.</p></div></footer>
-    <button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></button>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="navbar-logo-placeholder" style="width:36px;height:36px;font-size:14px;"><span>SL</span></div>
+                <div class="footer-brand-name">Perpustakaan SMA Katolik St. Louis 2</div>
+            </div>
+            <p class="footer-text">Membangun generasi literat yang berlandaskan iman dan ilmu pengetahuan.</p>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p class="footer-text" style="font-size:12px;">© 2025 Perpustakaan SMA Katolik St. Louis 2. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Detail</h3>
+                <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
 
     <script>
-        const GAS_URL = 'https://script.google.com/macros/s/AKfycbx7k5i-bhBvofOvRD0Hey7qp2aWQ3DqrCVnXMPG208H77ng9tXYk1wvQU9YCzdeA3yn/exec';
-        const FALLBACK = {
-            settings:{logo:'',totalKoleksi:1250,totalPengunjung:3580,totalPeminjam:890,strukturOrg:''},
-            books:[{judul:'Laskar Pelangi',pengarang:'Andrea Hirata',rak:'800',klasifikasi:'Sastra',kategori:'Fiksi',deskripsi:'Novel inspiratif.',pop:120,new:false,img:''}],
-            visitors:[{nama:'Anisa',kelas:'XII IPA 1',kunjungan:156}],
-            borrowers:[{nama:'Budi',kelas:'XI IPS 2',peminjaman:45}],
-            quotes:[{text:'Buku adalah jendela dunia.',author:'Tim Perpustakaan'}],
-            articles:[{title:'Literasi Digital',excerpt:'Penting di era modern.',date:'15 Jan 2025',img:''}],
-            dokumentasi:[{type:'foto',title:'Workshop',desc:'Kegiatan siswa',img:'',date:'10 Jan'}],
-            layanan:[{title:'Peminjaman',desc:'Pinjam buku mudah',icon:'fas fa-book-reader',link:'#'}]
-        };
-        let D = JSON.parse(JSON.stringify(FALLBACK)), curB = 0, bInt;
+        // ==================== KONFIGURASI ====================
+        // GANTI URL ini dengan Web App URL dari Google Apps Script kamu
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzDchzYiZxHW_nWqbmPsUeBmnK_jnZhZkuU5gfrU95OMR7EYATof_xzkC7UjFQaNekfoQ/exec';
 
-        async function loadData() {
-            console.log('🔄 Fetch data...');
-            if (!GAS_URL || !GAS_URL.includes('http')) { applyFallback(); return; }
+        // ==================== FALLBACK DATA ====================
+        const FALLBACK_DATA = {
+            books: [
+                { judul: "Laskar Pelangi", pengarang: "Andrea Hirata", rak: "800", klasifikasi: "Sastra Indonesia", kategori: "Fiksi", deskripsi: "Novel inspiratif tentang perjuangan 10 anak Belitung yang menginspirasi jutaan pembaca.", pop: 120, new: false, img: "" },
+                { judul: "Bumi Manusia", pengarang: "Pramoedya Ananta Toer", rak: "800", klasifikasi: "Sastra Indonesia", kategori: "Fiksi", deskripsi: "Novel pertama dari Tetralogi Buru tentang kehidupan di era kolonial.", pop: 105, new: false, img: "" },
+                { judul: "Filosofi Teras", pengarang: "Henry Manampiring", rak: "100", klasifikasi: "Filsafat", kategori: "Non-Fiksi", deskripsi: "Buku yang mengajak menerapkan filsafat Stoa dalam kehidupan sehari-hari.", pop: 98, new: false, img: "" },
+                { judul: "Atomic Habits", pengarang: "James Clear", rak: "100", klasifikasi: "Pengembangan Diri", kategori: "Non-Fiksi", deskripsi: "Panduan praktis membangun kebiasaan baik dan menghilangkan yang buruk.", pop: 95, new: true, img: "" },
+                { judul: "Sapiens", pengarang: "Yuval Noah Harari", rak: "900", klasifikasi: "Sejarah", kategori: "Non-Fiksi", deskripsi: "Sejarah singkat umat manusia dari zaman purba hingga era modern.", pop: 88, new: false, img: "" },
+                { judul: "Educating Indonesia", pengarang: "Arifin Panigoro", rak: "300", klasifikasi: "Pendidikan", kategori: "Non-Fiksi", deskripsi: "Analisis mendalam tentang sistem pendidikan di Indonesia.", pop: 82, new: true, img: "" },
+                { judul: "Laut Bercerita", pengarang: "Leila S. Chudori", rak: "800", klasifikasi: "Sastra Indonesia", kategori: "Fiksi", deskripsi: "Novel tentang perjuangan aktivis mahasiswa di era Orde Baru.", pop: 78, new: false, img: "" },
+                { judul: "Think and Grow Rich", pengarang: "Napoleon Hill", rak: "600", klasifikasi: "Bisnis", kategori: "Non-Fiksi", deskripsi: "Buku klasik tentang prinsip-prinsip kesuksesan dan kekayaan.", pop: 75, new: false, img: "" },
+                { judul: "Matematika Kelas X", pengarang: "Kemdikbud", rak: "500", klasifikasi: "Matematika", kategori: "Buku Teks", deskripsi: "Buku teks matematika untuk siswa kelas X SMA.", pop: 70, new: false, img: "" },
+                { judul: "Fisika untuk SMA", pengarang: "E. Tarek", rak: "500", klasifikasi: "Fisika", kategori: "Buku Teks", deskripsi: "Buku teks fisika lengkap untuk tingkat SMA/MA.", pop: 68, new: false, img: "" },
+                { judul: "Harry Potter dan Batu Bertuah", pengarang: "J.K. Rowling", rak: "800", klasifikasi: "Sastra Inggris", kategori: "Fiksi", deskripsi: "Buku pertama seri Harry Potter yang menghidupkan dunia sihir.", pop: 110, new: false, img: "" },
+                { judul: "The Psychology of Money", pengarang: "Morgan Housel", rak: "600", klasifikasi: "Keuangan", kategori: "Non-Fiksi", deskripsi: "Pelajaran abadi tentang kekayaan, ketamakan, dan kebahagiaan.", pop: 65, new: true, img: "" },
+                { judul: "Biologi SMA Kelas XII", pengarang: "Kemdikbud", rak: "500", klasifikasi: "Biologi", kategori: "Buku Teks", deskripsi: "Buku teks biologi untuk siswa kelas XII SMA/MA.", pop: 60, new: false, img: "" },
+                { judul: "Cantik Itu Luka", pengarang: "Eka Kurniawan", rak: "800", klasifikasi: "Sastra Indonesia", kategori: "Fiksi", deskripsi: "Novel magis realis tentang kecantikan dan kekuasaan.", pop: 58, new: false, img: "" },
+                { judul: "Sang Pemimpi", pengarang: "Andrea Hirata", rak: "800", klasifikasi: "Sastra Indonesia", kategori: "Fiksi", deskripsi: "Sekuel dari Laskar Pelangi tentang mimpi dua anak Belitung.", pop: 92, new: false, img: "" },
+                { judul: "Kalkulus Jilid 1", pengarang: "Thomas", rak: "500", klasifikasi: "Matematika", kategori: "Buku Teks", deskripsi: "Buku referensi kalkulus untuk mahasiswa dan siswa SMA.", pop: 55, new: false, img: "" },
+                { judul: "Deep Work", pengarang: "Cal Newport", rak: "100", klasifikasi: "Pengembangan Diri", kategori: "Non-Fiksi", deskripsi: "Strategi untuk fokus dan bekerja produktif di era distraksi.", pop: 72, new: true, img: "" },
+                { judul: "Sejarah Indonesia Modern", pengarang: "M.C. Ricklefs", rak: "900", klasifikasi: "Sejarah", kategori: "Non-Fiksi", deskripsi: "Sejarah Indonesia dari abad ke-13 hingga era reformasi.", pop: 48, new: false, img: "" },
+            ],
+            visitors: [
+                { nama: "Anisa Rahma", kelas: "XII IPA 1", kunjungan: 156 },
+                { nama: "Budi Santoso", kelas: "XI IPA 2", kunjungan: 142 },
+                { nama: "Citra Dewi", kelas: "X IPS 1", kunjungan: 138 },
+                { nama: "Dimas Pratama", kelas: "XII IPS 2", kunjungan: 125 },
+                { nama: "Eka Putri", kelas: "X IPA 3", kunjungan: 118 },
+                { nama: "Fajar Nugroho", kelas: "XI IPS 1", kunjungan: 110 },
+                { nama: "Gita Saraswati", kelas: "XII IPA 3", kunjungan: 105 },
+            ],
+            borrowers: [
+                { nama: "Anisa Rahma", kelas: "XII IPA 1", peminjaman: 45 },
+                { nama: "Budi Santoso", kelas: "XI IPA 2", peminjaman: 38 },
+                { nama: "Dimas Pratama", kelas: "XII IPS 2", peminjaman: 35 },
+                { nama: "Citra Dewi", kelas: "X IPS 1", peminjaman: 30 },
+                { nama: "Eka Putri", kelas: "X IPA 3", peminjaman: 28 },
+            ],
+            quotes: [
+                { text: "Buku adalah jendela dunia. Baca, pelajari, dan rasakan keajaibannya.", author: "Tim Perpustakaan St. Louis 2" },
+                { text: "Membaca adalah makanan bagi pikiran. Makin banyak membaca, makin luas wawasan kita.", author: "Perpustakaan St. Louis 2" },
+                { text: "Investasi pada pengetahuan selalu menghasilkan return terbaik.", author: "Tim Perpustakaan St. Louis 2" },
+            ],
+            articles: [
+                { title: "Pentingnya Literasi di Era Digital", excerpt: "Di era digital, literasi bukan hanya tentang membaca buku, tetapi juga memahami informasi dari berbagai sumber.", date: "15 Jan 2025", img: "" },
+                { title: "Tips Memilih Buku yang Tepat", excerpt: "Memilih buku yang tepat dapat meningkatkan pengalaman membaca dan memperluas wawasan.", date: "20 Jan 2025", img: "" },
+                { title: "Program Literasi Sekolah 2025", excerpt: "Perpustakaan St. Louis 2 meluncurkan program literasi baru untuk meningkatkan minat baca siswa.", date: "28 Jan 2025", img: "" },
+            ],
+            dokumentasi: [
+                { type: "foto", title: "Perpustakaan Hari Buku Nasional", desc: "Kegiatan perpustakaan memperingati Hari Buku Nasional dengan berbagai lomba dan pameran.", img: "" },
+                { type: "foto", title: "Workshop Literasi Digital", desc: "Workshop yang mengajarkan siswa cara memanfaatkan teknologi untuk pembelajaran.", img: "" },
+                { type: "foto", title: "Donasi Buku Besar", desc: "Kegiatan donasi buku dari seluruh siswa untuk menambah koleksi perpustakaan.", img: "" },
+                { type: "artikel", title: "Evaluasi Program Perpustakaan 2024", desc: "Evaluasi menyeluruh terhadap program-program perpustakaan selama tahun 2024.", date: "10 Jan 2025", img: "" },
+                { type: "artikel", title: "Renovasi Perpustakaan", desc: "Perpustakaan mengalami renovasi untuk menciptakan ruang yang lebih nyaman.", date: "5 Feb 2025", img: "" },
+            ],
+            layanan: [
+                { title: "Peminjaman Buku", desc: "Layanan peminjaman buku dalam dan luar perpustakaan dengan mudah.", icon: "fas fa-book-reader", link: "#" },
+                { title: "Katalog Digital", desc: "Cari dan jelajahi koleksi buku melalui katalog digital kami.", icon: "fas fa-search", link: "#" },
+                { title: "Ruang Belajar", desc: "Ruang belajar nyaman yang tersedia untuk siswa.", icon: "fas fa-chalkboard-teacher", link: "#" },
+                { title: "E-Library", desc: "Akses buku elektronik dan sumber belajar digital.", icon: "fas fa-laptop", link: "#" },
+                { title: "Program Literasi", desc: "Bergabung dengan program literasi dan kegiatan membaca.", icon: "fas fa-users", link: "#" },
+                { title: "Layanan Referensi", desc: "Bantuan pencarian informasi dan referensi dari petugas perpustakaan.", icon: "fas fa-headset", link: "#" },
+            ],
+            settings: { logo: "", totalKoleksi: 1250, totalPengunjung: 3580, totalPeminjam: 890 }
+        };
+
+        let appData = JSON.parse(JSON.stringify(FALLBACK_DATA));
+        let currentBanner = 0;
+        let bannerInterval;
+
+        // ==================== FETCH DARI APPS SCRIPT ====================
+        async function loadFromAppsScript() {
             try {
-                const res = await fetch(GAS_URL);
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                const json = await res.json();
-                console.log('✅ Data diterima:', json);
-                D.settings = { logo: json.settings?.logo||'', totalKoleksi: parseInt(json.settings?.totalKoleksi)||0, totalPengunjung: parseInt(json.settings?.totalPengunjung)||0, totalPeminjam: parseInt(json.settings?.totalPeminjam)||0, strukturOrg: json.settings?.strukturOrg||'' };
-                D.books = (json.books||[]).map(b=>({...b,pop:parseInt(b.popularitas||b.pop)||0,new:b.new===true||String(b.baru).toLowerCase()==='ya'}));
-                D.visitors = json.visitors||[]; D.borrowers = json.borrowers||[]; D.quotes = json.quotes||[]; D.articles = json.articles||[]; D.dokumentasi = json.dokumentasi||[]; D.layanan = json.layanan||[];
-                applySettings(); renderBanner(json.banner||[]); renderAll(); animateCounters();
-            } catch(e) {
-                console.error('❌ Fetch gagal:', e); applyFallback();
+                const response = await fetch(APPS_SCRIPT_URL);
+                if (!response.ok) throw new Error('HTTP ' + response.status);
+                const raw = await response.text();
+                const data = JSON.parse(raw);
+                return data;
+            } catch (e) {
+                console.warn('Gagal memuat dari Apps Script, menggunakan fallback data.', e);
+                return null;
             }
         }
 
-        function applySettings() {
-            if(D.settings.logo){const i=document.getElementById('lg');i.src=D.settings.logo;i.style.display='block';document.getElementById('lt').style.display='none'}
-            if(D.settings.strukturOrg) document.getElementById('so').innerHTML=`<img src="${D.settings.strukturOrg}" style="width:100%;border-radius:var(--r-l);max-height:400px;object-fit:cover">`;
-            document.getElementById('sk').textContent = D.settings.totalKoleksi.toLocaleString('id-ID');
-            document.getElementById('sp').textContent = D.settings.totalPengunjung.toLocaleString('id-ID');
-            document.getElementById('sv').textContent = D.settings.totalPeminjam.toLocaleString('id-ID');
-            const q = D.quotes[Math.floor(Math.random()*D.quotes.length)];
-            if(q){document.getElementById('qt').textContent=`"${q.text}"`;document.getElementById('qa').textContent=`— ${q.author}`}
+        function normalizeBooks(booksArr) {
+            return booksArr.map(b => ({
+                judul: b.judul || b.Judul || '',
+                pengarang: b.pengarang || b.Pengarang || '',
+                rak: String(b.rak || b.Rak || '000'),
+                klasifikasi: b.klasifikasi || b.Klasifikasi || '',
+                kategori: b.kategori || b.Kategori || 'Lainnya',
+                deskripsi: b.deskripsi || b.Deskripsi || '',
+                pop: parseInt(b.popularitas || b.pop || '0'),
+                new: (b.baru === 'ya' || b.new === 'yes' || b.baru === true || b.new === true),
+                img: b.gambar || b.img || ''
+            }));
         }
 
-        function renderBanner(banners) {
-            const t=document.getElementById('bnt'),n=document.getElementById('bnav'); t.innerHTML='';n.innerHTML='';
-            if(!banners.length) banners=[{title:'Selamat Datang',desc:'Jelajahi koleksi buku kami.',gradient:'linear-gradient(135deg,rgba(79,70,229,.8),rgba(124,58,237,.6))',btnText:'Jelajahi',link:'#'}];
-            banners.forEach((s,i)=>{
-                const d=document.createElement('div');d.className='bnd';
-                d.innerHTML=`${s.image?`<img src="${s.image}">`:''}<div class="bno" style="background:${s.gradient||'linear-gradient(135deg,rgba(79,70,229,.8),rgba(124,58,237,.6))'}"><div class="bnc"><h2>${s.title}</h2><p>${s.desc}</p><button class="bnn" onclick="window.open('${s.link||'#}','_blank')"><i class="fas fa-arrow-right"></i> ${s.btnText||'Selengkapnya'}</button></div></div>`;
-                t.appendChild(d); const p=document.createElement('button');p.className=`bdot ${i===0?'act':''}`;p.onclick=()=>goBanner(i);n.appendChild(p);
+        function normalizeVisitors(arr) {
+            return arr.map(v => ({
+                nama: v.nama || v.Nama || '',
+                kelas: v.kelas || v.Kelas || '',
+                kunjungan: parseInt(v.kunjungan || v.Kunjungan || '0')
+            }));
+        }
+
+        function normalizeBorrowers(arr) {
+            return arr.map(b => ({
+                nama: b.nama || b.Nama || '',
+                kelas: b.kelas || b.Kelas || '',
+                peminjaman: parseInt(b.peminjaman || b.Peminjaman || '0')
+            }));
+        }
+
+        function normalizeQuotes(arr) {
+            return arr.map(q => ({
+                text: q.text || q.quotes || q.kutipan || q.Text || '',
+                author: q.author || q.penulis || q.Author || ''
+            }));
+        }
+
+        function normalizeArticles(arr) {
+            return arr.map(a => ({
+                title: a.judul || a.title || a.Judul || '',
+                excerpt: a.kutipan || a.excerpt || a.Kutipan || '',
+                date: a.tanggal || a.date || a.Tanggal || '',
+                img: a.gambar || a.img || a.Gambar || ''
+            }));
+        }
+
+        function normalizeDokumentasi(arr) {
+            return arr.map(d => ({
+                type: d.tipe || d.type || d.Tipe || 'foto',
+                title: d.judul || d.title || d.Judul || '',
+                desc: d.deskripsi || d.desc || d.penjelasan || d.Deskripsi || '',
+                date: d.tanggal || d.date || d.Tanggal || '',
+                img: d.gambar || d.img || d.Gambar || ''
+            }));
+        }
+
+        function normalizeLayanan(arr) {
+            return arr.map(l => ({
+                title: l.judul || l.title || l.Judul || '',
+                desc: l.deskripsi || l.desc || l.Deskripsi || '',
+                icon: l.ikon || l.icon || l.Ikon || 'fas fa-circle',
+                link: l.tautan || l.link || l.Tautan || '#'
+            }));
+        }
+
+        async function loadAllData() {
+            const apiData = await loadFromAppsScript();
+
+            if (apiData && typeof apiData === 'object') {
+                // Settings
+                if (apiData.settings) {
+                    const s = apiData.settings;
+                    appData.settings = {
+                        logo: s.logo || s.Logo || '',
+                        totalKoleksi: parseInt(s.totalKoleksi || s.TotalKoleksi || '0') || FALLBACK_DATA.settings.totalKoleksi,
+                        totalPengunjung: parseInt(s.totalPengunjung || s.TotalPengunjung || '0') || FALLBACK_DATA.settings.totalPengunjung,
+                        totalPeminjam: parseInt(s.totalPeminjam || s.TotalPeminjam || '0') || FALLBACK_DATA.settings.totalPeminjam,
+                    };
+                }
+                // Books
+                if (apiData.books && apiData.books.length > 0) {
+                    appData.books = normalizeBooks(apiData.books);
+                }
+                // Visitors
+                if (apiData.visitors && apiData.visitors.length > 0) {
+                    appData.visitors = normalizeVisitors(apiData.visitors);
+                }
+                // Borrowers
+                if (apiData.borrowers && apiData.borrowers.length > 0) {
+                    appData.borrowers = normalizeBorrowers(apiData.borrowers);
+                }
+                // Quotes
+                if (apiData.quotes && apiData.quotes.length > 0) {
+                    appData.quotes = normalizeQuotes(apiData.quotes);
+                }
+                // Articles
+                if (apiData.articles && apiData.articles.length > 0) {
+                    appData.articles = normalizeArticles(apiData.articles);
+                }
+                // Dokumentasi
+                if (apiData.dokumentasi && apiData.dokumentasi.length > 0) {
+                    appData.dokumentasi = normalizeDokumentasi(apiData.dokumentasi);
+                }
+                // Layanan
+                if (apiData.layanan && apiData.layanan.length > 0) {
+                    appData.layanan = normalizeLayanan(apiData.layanan);
+                }
+            }
+
+            // Set logo
+            if (appData.settings.logo) {
+                const logoImg = document.getElementById('navLogo');
+                logoImg.src = appData.settings.logo;
+                logoImg.style.display = 'block';
+                document.getElementById('navLogoText').style.display = 'none';
+            }
+
+            // Set stats
+            document.getElementById('statKoleksi').textContent = appData.settings.totalKoleksi.toLocaleString('id-ID');
+            document.getElementById('statPengunjung').textContent = appData.settings.totalPengunjung.toLocaleString('id-ID');
+            document.getElementById('statPeminjam').textContent = appData.settings.totalPeminjam.toLocaleString('id-ID');
+
+            // Set random quote
+            const quote = appData.quotes[Math.floor(Math.random() * appData.quotes.length)];
+            if (quote) {
+                document.getElementById('quoteText').textContent = `"${quote.text}"`;
+                document.getElementById('quoteAuthor').textContent = `— ${quote.author}`;
+            }
+
+            renderAll();
+            animateCounters();
+
+            // Hide loading overlay
+            setTimeout(() => {
+                document.getElementById('loadingOverlay').classList.add('hidden');
+            }, 500);
+        }
+
+        // ==================== RENDER ====================
+        function renderAll() {
+            renderPopularBooks();
+            renderNewBooks();
+            renderTopVisitors();
+            renderTopBorrowers();
+            renderArticles();
+            renderRakGrid();
+            renderKategoriGrid();
+            renderVisitorPodium();
+            renderBorrowerPodium();
+            renderLeaderboardCharts();
+            renderDokumentasi('foto');
+            renderLayanan();
+        }
+
+        function hashCode(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) { hash = ((hash << 5) - hash) + str.charCodeAt(i); hash |= 0; }
+            return hash;
+        }
+
+        function createBookCard(book, badge) {
+            const c = `hsl(${Math.abs(hashCode(book.judul)) % 360}, 60%, 50%)`;
+            const imgHTML = book.img
+                ? `<img src="${book.img}" alt="${book.judul}" onerror="this.parentElement.innerHTML='<div class=\\'placeholder-img\\' style=\\'background:${c}\\'><i class=\\'fas fa-book\\'></i></div>'">`
+                : `<div class="placeholder-img" style="background:${c}"><i class="fas fa-book"></i></div>`;
+            return `<div class="book-card" onclick='showBookDetail(${JSON.stringify(book)})'>
+                ${badge ? `<div class="${badge}">${badge === 'book-popular-badge' ? '🔥 Populer' : '✨ Baru'}</div>` : ''}
+                <div class="book-card-img">${imgHTML}</div>
+                <div class="book-card-body">
+                    <div class="book-card-title">${book.judul}</div>
+                    <div class="book-card-author">${book.pengarang}</div>
+                    <div class="book-card-meta"><span class="book-tag">${book.rak}</span><span class="book-tag">${book.kategori}</span></div>
+                </div></div>`;
+        }
+
+        function renderPopularBooks() {
+            const s = [...appData.books].sort((a, b) => (b.pop || 0) - (a.pop || 0)).slice(0, 6);
+            document.getElementById('popularBooksGrid').innerHTML = s.map(b => createBookCard(b, 'book-popular-badge')).join('');
+        }
+
+        function renderNewBooks() {
+            let s = [...appData.books].filter(b => b.new).slice(0, 6);
+            if (s.length < 6) s.push(...[...appData.books].filter(b => !b.new).slice(0, 6 - s.length));
+            document.getElementById('newBooksGrid').innerHTML = s.slice(0, 6).map(b => createBookCard(b, 'book-new-badge')).join('');
+        }
+
+        function renderTopVisitors() {
+            const t = [...appData.visitors].sort((a, b) => b.kunjungan - a.kunjungan).slice(0, 3);
+            document.getElementById('topVisitorsGrid').innerHTML = t.map((v, i) =>
+                `<div class="top-card"><div class="top-card-rank">${i + 1}</div><div class="top-card-avatar">${v.nama.charAt(0)}</div><div class="top-card-name">${v.nama}</div><div class="top-card-count">${v.kelas} • ${v.kunjungan} kunjungan</div></div>`
+            ).join('');
+        }
+
+        function renderTopBorrowers() {
+            const t = [...appData.borrowers].sort((a, b) => b.peminjaman - a.peminjaman).slice(0, 3);
+            document.getElementById('topBorrowersGrid').innerHTML = t.map((b, i) =>
+                `<div class="top-card"><div class="top-card-rank">${i + 1}</div><div class="top-card-avatar">${b.nama.charAt(0)}</div><div class="top-card-name">${b.nama}</div><div class="top-card-count">${b.kelas} • ${b.peminjaman} peminjaman</div></div>`
+            ).join('');
+        }
+
+        function renderArticles() {
+            document.getElementById('articlesGrid').innerHTML = appData.articles.map(a =>
+                `<div class="article-card" onclick='showArticleDetail(${JSON.stringify(a)})'>
+                    ${a.img ? `<img class="article-card-img" src="${a.img}" alt="${a.title}" onerror="this.style.display='none'">` : `<div class="article-card-img" style="background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;color:white;font-size:36px;"><i class="fas fa-newspaper"></i></div>`}
+                    <div class="article-card-body"><div class="article-card-date"><i class="far fa-calendar"></i> ${a.date}</div><div class="article-card-title">${a.title}</div><div class="article-card-excerpt">${a.excerpt}</div></div>
+                </div>`
+            ).join('');
+        }
+
+        function renderRakGrid() {
+            const labels = {'000':'Komputer & Informatika','100':'Filsafat & Psikologi','200':'Agama','300':'Ilmu Sosial','400':'Bahasa','500':'Sains & Matematika','600':'Teknologi','700':'Seni & Rekreasi','800':'Sastra','900':'Sejarah & Geografi'};
+            document.getElementById('rakGrid').innerHTML = ['000','100','200','300','400','500','600','700','800','900'].map(r => {
+                const count = appData.books.filter(b => b.rak === String(r)).length;
+                return `<div class="rak-card" onclick="openRakFilter('${r}', this)">
+                    <div class="rak-number">${r}</div><div class="rak-count">${count} buku</div>
+                    <div style="font-size:11px;color:var(--text-tertiary);margin-top:4px;">${labels[r] || ''}</div></div>`;
+            }).join('');
+        }
+
+        function renderKategoriGrid() {
+            const cats = {};
+            appData.books.forEach(b => { cats[b.kategori] = (cats[b.kategori] || 0) + 1; });
+            document.getElementById('kategoriGrid').innerHTML = Object.entries(cats).map(([cat, count]) =>
+                `<div class="rak-card" onclick="openKategoriFilter('${cat}', this)">
+                    <div style="font-size:18px;font-weight:700;margin-bottom:4px;">${cat}</div><div class="rak-count">${count} buku</div></div>`
+            ).join('');
+        }
+
+        function renderVisitorPodium() {
+            const t = [...appData.visitors].sort((a, b) => b.kunjungan - a.kunjungan).slice(0, 3);
+            const order = [t[1], t[0], t[2]];
+            document.getElementById('visitorPodium').innerHTML = order.map((v, i) => {
+                const r = i === 0 ? 2 : i === 1 ? 1 : 3;
+                return `<div class="podium-item">
+                    <div class="podium-avatar">${r === 1 ? '<span class="podium-crown">👑</span>' : ''}${v.nama.charAt(0)}</div>
+                    <div class="podium-name">${v.nama}</div><div class="podium-count">${v.kelas}</div>
+                    <div class="podium-bar">#${r}</div></div>`;
+            }).join('');
+        }
+
+        function renderBorrowerPodium() {
+            const t = [...appData.borrowers].sort((a, b) => b.peminjaman - a.peminjaman).slice(0, 3);
+            const order = [t[1], t[0], t[2]];
+            document.getElementById('borrowerPodium').innerHTML = order.map((b, i) => {
+                const r = i === 0 ? 2 : i === 1 ? 1 : 3;
+                return `<div class="podium-item">
+                    <div class="podium-avatar">${r === 1 ? '<span class="podium-crown">👑</span>' : ''}${b.nama.charAt(0)}</div>
+                    <div class="podium-name">${b.nama}</div><div class="podium-count">${b.kelas}</div>
+                    <div class="podium-bar">#${r}</div></div>`;
+            }).join('');
+        }
+
+        function renderLeaderboardCharts() {
+            const visitCat = {};
+            appData.visitors.forEach(v => {
+                const key = v.kelas.split(' ')[0] || 'Lainnya';
+                visitCat[key] = (visitCat[key] || 0) + v.kunjungan;
             });
-            clearInterval(bInt); bInt=setInterval(()=>goBanner((curB+1)%t.children.length),5000);
+            renderBarChart('visitByCategory', visitCat);
+            renderBarChart('visitByYear', { '2023': 1200, '2024': 1500, '2025': 880 });
+            const borrowCat = {};
+            appData.borrowers.forEach(b => {
+                const key = b.kelas.split(' ')[0] || 'Lainnya';
+                borrowCat[key] = (borrowCat[key] || 0) + b.peminjaman;
+            });
+            renderBarChart('borrowByCategory', borrowCat);
+            renderBarChart('borrowByYear', { '2023': 800, '2024': 1050, '2025': 600 });
+            const colRak = {};
+            ['000','100','200','300','400','500','600','700','800','900'].forEach(r => {
+                colRak['Rak ' + r] = appData.books.filter(b => b.rak === String(r)).length;
+            });
+            renderBarChart('collectionByRak', colRak);
         }
 
-        function goBanner(i){curB=i;document.getElementById('bnt').style.transform=`translateX(-${i*100}%)`;document.querySelectorAll('.bdot').forEach((d,j)=>d.classList.toggle('act',j===i));clearInterval(bInt);bInt=setInterval(()=>goBanner((curB+1)%document.querySelectorAll('.bnd').length),5000)}
-        function pB(){goBanner((curB-1+document.querySelectorAll('.bnd').length)%document.querySelectorAll('.bnd').length)}
-        function nB(){goBanner((curB+1)%document.querySelectorAll('.bnd').length)}
-
-        function hc(s){let h=0;for(let i=0;i<s.length;i++){h=((h<<5)-h)+s.charCodeAt(i);h|=0}return h}
-        function bCard(b,badge){
-            const c=`hsl(${Math.abs(hc(b.judul))%360},60%,50%)`;
-            return `<div class="bkc" onclick='alert("Detail: ${b.judul}\\n${b.deskripsi}")'>
-                ${badge?`<div style="position:absolute;top:12px;left:12px;padding:4px 12px;border-radius:999px;font-size:11px;font-weight:700;color:#fff;background:${badge==='pop'?'#f59e0b':'#10b981'};z-index:2">${badge==='pop'?'🔥 Populer':'✨ Baru'}</div>`:''}
-                <div class="bki" style="background:${b.img?`url('${b.img}') center/cover`:`linear-gradient(135deg,${c},${c}dd)`}"><i class="fas fa-book" style="display:${b.img?'none':'flex'}"></i></div>
-                <div class="bkb"><div class="bktl">${b.judul}</div><div class="bka">${b.pengarang}</div><div class="bkm"><span class="btag">${b.rak}</span><span class="btag">${b.kategori}</span></div></div></div>`;
+        function renderBarChart(containerId, data) {
+            const entries = Object.entries(data).sort((a, b) => b[1] - a[1]);
+            const maxVal = Math.max(...entries.map(e => e[1]), 1);
+            document.getElementById(containerId).innerHTML = entries.map(([label, value]) => {
+                const pct = Math.round((value / maxVal) * 100);
+                return `<div class="bar-item"><div class="bar-label">${label}</div><div class="bar-track"><div class="bar-fill" style="width:0%;" data-width="${pct}%"><span class="bar-value">${value}</span></div></div></div>`;
+            }).join('');
+            setTimeout(() => {
+                document.querySelectorAll(`#${containerId} .bar-fill`).forEach(bar => { bar.style.width = bar.dataset.width; });
+            }, 300);
         }
 
-        function renderAll(){
-            document.getElementById('pb').innerHTML=[...D.books].sort((a,b)=>b.pop-a.pop).slice(0,6).map(b=>bCard(b,'pop')).join('');
-            let nb=[...D.books].filter(b=>b.new).slice(0,6);if(nb.length<6)nb.push(...D.books.filter(b=>!b.new).slice(0,6-nb.length));
-            document.getElementById('nb').innerHTML=nb.slice(0,6).map(b=>bCard(b,'new')).join('');
-            document.getElementById('tv').innerHTML=[...D.visitors].sort((a,b)=>b.kunjungan-a.kunjungan).slice(0,3).map((v,i)=>`<div class="tpc"><div class="tpr">${i+1}</div><div class="tpa">${v.nama[0]}</div><div class="tpn">${v.nama}</div><div class="tpc2">${v.kelas} • ${v.kunjungan} kunj</div></div>`).join('');
-            document.getElementById('tb').innerHTML=[...D.borrowers].sort((a,b)=>b.peminjaman-a.peminjaman).slice(0,3).map((b,i)=>`<div class="tpc"><div class="tpr">${i+1}</div><div class="tpa">${b.nama[0]}</div><div class="tpn">${b.nama}</div><div class="tpc2">${b.kelas} • ${b.peminjaman} pinjam</div></div>`).join('');
-            document.getElementById('ag').innerHTML=D.articles.map(a=>`<div class="arc"><div class="arimg" style="background:${a.img?`url('${a.img}') center/cover`:'var(--grad)'};display:flex;align-items:center;justify-content:center;color:#fff;font-size:36px"><i class="fas ${a.img?'':'fa-newspaper'}"></i></div><div class="arb"><div class="ard">${a.date}</div><div class="art">${a.title}</div><div class="are">${a.excerpt}</div></div></div>`).join('');
-            renderRak(); renderKat(); renderPodium(); renderCharts(); renderDok('foto'); renderLay();
+        function renderDokumentasi(type) {
+            const filtered = appData.dokumentasi.filter(d => d.type === type);
+            document.getElementById('dokGrid').innerHTML = filtered.map(d =>
+                `<div class="dok-item" onclick='${type === 'foto' ? `showFotoDetail(${JSON.stringify(d)})` : `showArticleDetail(${JSON.stringify(d)})`}'>
+                    ${d.img ? `<img class="dok-item-img" src="${d.img}" alt="${d.title}" onerror="this.style.display='none';this.outerHTML='<div class=dok-item-img style=\\'background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;color:white;font-size:40px;\\'><i class=\\'fas fa-${type === 'foto' ? 'camera' : 'newspaper'}\\'></i></div>'">` : `<div class="dok-item-img" style="background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;color:white;font-size:40px;"><i class="fas fa-${type === 'foto' ? 'camera' : 'newspaper'}"></i></div>`}
+                    <div class="dok-item-body"><div class="dok-item-title">${d.title}</div><div class="dok-item-desc">${d.desc}</div></div></div>`
+            ).join('');
         }
 
-        function renderRak(){const l={'000':'Komputer','100':'Filsafat','200':'Agama','300':'Sosial','400':'Bahasa','500':'Sains','600':'Teknologi','700':'Seni','800':'Sastra','900':'Sejarah'};document.getElementById('rg').innerHTML=['000','100','200','300','400','500','600','700','800','900'].map(r=>{const c=D.books.filter(b=>b.rak===r).length;return`<div class="rc" onclick="alert('Rak ${r}: ${c} buku')"><div class="rn">${r}</div><div class="rcnt">${c} buku</div><div style="font-size:11px;color:var(--txt3)">${l[r]}</div></div>`}).join('')}
-        function renderKat(){const c={};D.books.forEach(b=>c[b.kategori]=(c[b.kategori]||0)+1);document.getElementById('kg').innerHTML=Object.entries(c).map(([k,n])=>`<div class="rc" onclick="alert('${k}: ${n} buku')"><div style="font-size:18px;font-weight:700">${k}</div><div class="rcnt">${n} buku</div></div>`).join('')}
-        function sKT(t,el){document.querySelectorAll('.ktab').forEach(x=>x.classList.remove('act'));el.classList.add('act');document.getElementById('rv').style.display=t==='rak'?'block':'none';document.getElementById('kv').style.display=t==='kat'?'block':'none'}
-        function renderPodium(){
-            const tv=[...D.visitors].sort((a,b)=>b.kunjungan-a.kunjungan).slice(0,3),ob=[tv[1],tv[0],tv[2]];
-            document.getElementById('vp').innerHTML=ob.map((v,i)=>{const r=i===0?2:i===1?1:3;return`<div class="pi"><div class="pav" style="position:relative">${r===1?'<span class="pcrn">👑</span>':''}${v.nama[0]}</div><div class="pnm">${v.nama}</div><div class="pct">${v.kelas}</div><div class="pbar">#${r}</div></div>`}).join('');
-            const tb=[...D.borrowers].sort((a,b)=>b.peminjaman-a.peminjaman).slice(0,3),ob2=[tb[1],tb[0],tb[2]];
-            document.getElementById('bp').innerHTML=ob2.map((b,i)=>{const r=i===0?2:i===1?1:3;return`<div class="pi"><div class="pav" style="position:relative">${r===1?'<span class="pcrn">👑</span>':''}${b.nama[0]}</div><div class="pnm">${b.nama}</div><div class="pct">${b.kelas}</div><div class="pbar">#${r}</div></div>`}).join('');
+        function renderLayanan() {
+            document.getElementById('layananGrid').innerHTML = appData.layanan.map(l =>
+                `<div class="layanan-card" onclick='showLayananDetail(${JSON.stringify(l)})'>
+                    <div class="layanan-icon"><i class="${l.icon}"></i></div>
+                    <div class="layanan-title">${l.title}</div><div class="layanan-desc">${l.desc}</div></div>`
+            ).join('');
         }
-        function renderCharts(){
-            const vC={};D.visitors.forEach(v=>vC[v.kelas.split(' ')[0]||'Lain']=(vC[v.kelas.split(' ')[0]]||0)+v.kunjungan);
-            renderBar('vbc',vC);
-            const cR={};['000','100','200','300','400','500','600','700','800','900'].forEach(r=>cR[`Rak ${r}`]=D.books.filter(b=>b.rak===r).length);
-            renderBar('cb',cR);
+
+        // ==================== NAVIGATION ====================
+        function navigateTo(page) {
+            currentPage = page;
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(`section-${page}`).classList.add('active');
+            document.querySelectorAll('.navbar-links a, .mobile-menu a').forEach(a => a.classList.toggle('active', a.dataset.page === page));
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => { observeAnimations(); }, 100);
         }
-        function renderBar(id,data){const e=Object.entries(data).sort((a,b)=>b[1]-a[1]),m=Math.max(...e.map(x=>x[1]),1);document.getElementById(id).innerHTML=e.map(([l,v])=>{const p=Math.round((v/m)*100);return`<div class="bi"><div class="bl">${l}</div><div class="bt"><div class="bf" style="width:0%" data-w="${p}%"><span class="bv">${v}</span></div></div></div>`}).join('');setTimeout(()=>document.querySelectorAll(`#${id} .bf`).forEach(b=>b.style.width=b.dataset.w+'%'),300)}
-        function renderDok(t){const f=D.dokumentasi.filter(d=>d.type===t);document.getElementById('dg').innerHTML=f.map(d=>`<div class="doki"><div class="dokimg" style="background:${d.img?`url('${d.img}') center/cover`:'var(--grad)'};display:flex;align-items:center;justify-content:center;color:#fff;font-size:40px"><i class="fas ${d.img?'':'fa-'+(t==='foto'?'camera':'newspaper')}"></i></div><div class="dokb"><div class="dokt">${d.title}</div><div class="dokd">${d.desc}</div></div></div>`).join('')}
-        function sDT(t,el){document.querySelectorAll('.ktab').forEach(x=>x.classList.remove('act'));el.classList.add('act');renderDok(t)}
-        function renderLay(){document.getElementById('layg').innerHTML=D.layanan.map(l=>`<div class="layc"><div class="layi"><i class="${l.icon}"></i></div><div class="layt">${l.title}</div><div class="layd">${l.desc}</div></div>`).join('')}
 
-        function go(p){document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));document.getElementById('s-'+p).classList.add('on');document.querySelectorAll('.nav-ll a').forEach(a=>a.classList.toggle('act',a.dataset.p===p));window.scrollTo({top:0,behavior:'smooth'})}
-        function tThm(){const n=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';document.documentElement.setAttribute('data-theme',n);localStorage.setItem('theme',n);document.querySelector('.thm').innerHTML=n==='light'?'<i class="fas fa-moon"></i>':'<i class="fas fa-sun"></i>'}
-        function applyFallback(){console.log('📦 Fallback');D=JSON.parse(JSON.stringify(FALLBACK));applySettings();renderBanner([]);renderAll();animateCounters()}
-        function animateCounters(){[{e:'sk',t:D.settings.totalKoleksi},{e:'sp',t:D.settings.totalPengunjung},{e:'sv',t:D.settings.totalPeminjam}].forEach(({e,t})=>{const el=document.getElementById(e);if(!el)return;let c=0;const inc=Math.ceil(t/60);const tm=setInterval(()=>{c+=inc;if(c>=t){c=t;clearInterval(tm)}el.textContent=c.toLocaleString('id-ID')},30)})}
-        function cP(){const c=document.getElementById('par');for(let i=0;i<20;i++){const p=document.createElement('div');p.className='prt';p.style.left=Math.random()*100+'%';p.style.top=Math.random()*100+'%';p.style.animationDelay=Math.random()*6+'s';p.style.animationDuration=(4+Math.random()*4)+'s';const s=2+Math.random()*4;p.style.width=s+'px';p.style.height=s+'px';c.appendChild(p)}}
-        function hS(){document.getElementById('btt').classList.toggle('vis',window.scrollY>400)}
+        // ==================== THEME ====================
+        function toggleTheme() {
+            const html = document.documentElement;
+            const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            document.getElementById('themeToggle').innerHTML = next === 'light' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+        }
+        function loadTheme() {
+            const saved = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', saved);
+            document.getElementById('themeToggle').innerHTML = saved === 'light' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+        }
 
-        document.addEventListener('DOMContentLoaded',()=>{
-            const th=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',th);document.querySelector('.thm').innerHTML=th==='light'?'<i class="fas fa-moon"></i>':'<i class="fas fa-sun"></i>';
-            cP(); loadData(); window.addEventListener('scroll',hS);
+        // ==================== MOBILE MENU ====================
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+            document.getElementById('hamburger').classList.toggle('active');
+        }
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('active');
+            document.getElementById('hamburger').classList.remove('active');
+        }
+
+        // ==================== BANNER ====================
+        function initBanner() {
+            const slides = document.querySelectorAll('.banner-slide');
+            const nav = document.getElementById('bannerNav');
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = `banner-dot ${i === 0 ? 'active' : ''}`;
+                dot.onclick = () => goToBanner(i);
+                nav.appendChild(dot);
+            });
+            startBannerAutoplay();
+        }
+        function goToBanner(index) {
+            const total = document.querySelectorAll('.banner-slide').length;
+            currentBanner = index;
+            document.getElementById('bannerTrack').style.transform = `translateX(-${index * 100}%)`;
+            document.querySelectorAll('.banner-dot').forEach((d, i) => d.classList.toggle('active', i === index));
+            resetBannerAutoplay();
+        }
+        function nextBanner() { goToBanner((currentBanner + 1) % document.querySelectorAll('.banner-slide').length); }
+        function prevBanner() { const t = document.querySelectorAll('.banner-slide').length; goToBanner((currentBanner - 1 + t) % t); }
+        function startBannerAutoplay() { bannerInterval = setInterval(nextBanner, 5000); }
+        function resetBannerAutoplay() { clearInterval(bannerInterval); startBannerAutoplay(); }
+
+        // ==================== KOLEKSI ====================
+        function switchKoleksiTab(type) {
+            document.querySelectorAll('.koleksi-tab').forEach(t => t.classList.toggle('active', t.dataset.type === type));
+            document.getElementById('rakView').style.display = type === 'rak' ? 'block' : 'none';
+            document.getElementById('kategoriView').style.display = type === 'kategori' ? 'block' : 'none';
+            document.getElementById('rakFilter').classList.remove('active');
+            document.getElementById('kategoriFilter').classList.remove('active');
+        }
+        function openRakFilter(rak, el) {
+            document.querySelectorAll('#rakGrid .rak-card').forEach(c => c.classList.remove('active'));
+            if (el) el.classList.add('active');
+            document.getElementById('rakFilter').classList.add('active');
+            document.getElementById('rakFilterTitle').textContent = `Rak ${rak}`;
+            const books = appData.books.filter(b => b.rak === String(rak));
+            document.getElementById('rakBooksGrid').innerHTML = books.length > 0
+                ? books.map(b => createBookCard(b)).join('')
+                : '<p style="text-align:center;color:var(--text-tertiary);grid-column:1/-1;padding:40px;">Tidak ada buku di rak ini.</p>';
+        }
+        function closeRakFilter() { document.getElementById('rakFilter').classList.remove('active'); document.querySelectorAll('#rakGrid .rak-card').forEach(c => c.classList.remove('active')); }
+        function openKategoriFilter(cat, el) {
+            document.querySelectorAll('#kategoriGrid .rak-card').forEach(c => c.classList.remove('active'));
+            if (el) el.classList.add('active');
+            document.getElementById('kategoriFilter').classList.add('active');
+            document.getElementById('kategoriFilterTitle').textContent = cat;
+            const books = appData.books.filter(b => b.kategori === cat);
+            document.getElementById('kategoriBooksGrid').innerHTML = books.length > 0
+                ? books.map(b => createBookCard(b)).join('')
+                : '<p style="text-align:center;color:var(--text-tertiary);grid-column:1/-1;padding:40px;">Tidak ada buku di kategori ini.</p>';
+        }
+        function closeKategoriFilter() { document.getElementById('kategoriFilter').classList.remove('active'); document.querySelectorAll('#kategoriGrid .rak-card').forEach(c => c.classList.remove('active')); }
+
+        // ==================== DOKUMENTASI ====================
+        function switchDokTab(type) {
+            document.querySelectorAll('.dok-tab').forEach(t => t.classList.toggle('active', t.dataset.type === type));
+            renderDokumentasi(type);
+        }
+
+        // ==================== MODAL ====================
+        function openModal(title, bodyHTML) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalBody').innerHTML = bodyHTML;
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal(e) {
+            if (e && e.target !== e.currentTarget) return;
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        function showBookDetail(book) {
+            const c = `hsl(${Math.abs(hashCode(book.judul)) % 360}, 60%, 50%)`;
+            openModal('Detail Buku', `
+                ${book.img ? `<img src="${book.img}" alt="${book.judul}" style="width:100%;border-radius:var(--radius-md);margin-bottom:16px;" onerror="this.style.display='none'">` : `<div style="width:100%;height:200px;border-radius:var(--radius-md);background:${c};display:flex;align-items:center;justify-content:center;color:white;font-size:64px;margin-bottom:16px;"><i class="fas fa-book"></i></div>`}
+                <div class="modal-detail-row"><div class="modal-detail-label">Judul</div><div class="modal-detail-value">${book.judul}</div></div>
+                <div class="modal-detail-row"><div class="modal-detail-label">Pengarang</div><div class="modal-detail-value">${book.pengarang}</div></div>
+                <div class="modal-detail-row"><div class="modal-detail-label">Rak Klasifikasi</div><div class="modal-detail-value">${book.rak}</div></div>
+                <div class="modal-detail-row"><div class="modal-detail-label">Klasifikasi</div><div class="modal-detail-value">${book.klasifikasi}</div></div>
+                <div class="modal-detail-row"><div class="modal-detail-label">Kategori</div><div class="modal-detail-value">${book.kategori}</div></div>
+                <div class="modal-desc">${book.deskripsi || 'Tidak ada deskripsi.'}</div>`);
+        }
+        function showArticleDetail(a) {
+            openModal(a.title || 'Artikel', `
+                ${a.img ? `<img src="${a.img}" alt="${a.title}" style="width:100%;border-radius:var(--radius-md);margin-bottom:16px;" onerror="this.style.display='none'">` : ''}
+                <div class="modal-detail-row"><div class="modal-detail-label">Tanggal</div><div class="modal-detail-value">${a.date || '-'}</div></div>
+                <div class="modal-desc" style="margin-top:16px;">${a.excerpt || a.desc || 'Tidak ada konten.'}</div>`);
+        }
+        function showFotoDetail(d) {
+            openModal(d.title || 'Foto Kegiatan', `
+                ${d.img ? `<img src="${d.img}" alt="${d.title}" style="width:100%;border-radius:var(--radius-md);margin-bottom:16px;max-height:400px;object-fit:cover;" onerror="this.style.display='none'">` : `<div style="width:100%;height:300px;border-radius:var(--radius-md);background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;color:white;font-size:64px;margin-bottom:16px;"><i class="fas fa-camera"></i></div>`}
+                <div class="modal-desc">${d.desc || 'Tidak ada penjelasan.'}</div>`);
+        }
+        function showLayananDetail(l) {
+            openModal(l.title || 'Layanan', `
+                <div style="text-align:center;margin-bottom:20px;"><div class="layanan-icon" style="margin:0 auto 16px;width:80px;height:80px;font-size:36px;"><i class="${l.icon}"></i></div></div>
+                <div class="modal-desc">${l.desc || 'Tidak ada deskripsi.'}</div>
+                <div style="text-align:center;"><a href="${l.link}" target="_blank" class="modal-link-btn"><i class="fas fa-external-link-alt"></i> Buka Layanan</a></div>`);
+        }
+
+        // ==================== SCROLL ANIMATIONS ====================
+        function observeAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            document.querySelectorAll('.animate-on-scroll:not(.visible)').forEach(el => observer.observe(el));
+        }
+
+        // ==================== COUNTER ====================
+        function animateCounters() {
+            const counters = [
+                { el: document.getElementById('statKoleksi'), target: appData.settings.totalKoleksi },
+                { el: document.getElementById('statPengunjung'), target: appData.settings.totalPengunjung },
+                { el: document.getElementById('statPeminjam'), target: appData.settings.totalPeminjam },
+            ];
+            counters.forEach(({ el, target }) => {
+                if (!el) return;
+                let current = 0;
+                const increment = Math.max(1, Math.ceil(target / 60));
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) { current = target; clearInterval(timer); }
+                    el.textContent = current.toLocaleString('id-ID');
+                }, 30);
+            });
+        }
+
+        // ==================== PARTICLES ====================
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 20; i++) {
+                const p = document.createElement('div'); p.className = 'particle';
+                p.style.left = Math.random() * 100 + '%'; p.style.top = Math.random() * 100 + '%';
+                p.style.animationDelay = Math.random() * 6 + 's';
+                p.style.animationDuration = (4 + Math.random() * 4) + 's';
+                const size = 2 + Math.random() * 4;
+                p.style.width = size + 'px'; p.style.height = size + 'px';
+                container.appendChild(p);
+            }
+        }
+
+        // ==================== SCROLL ====================
+        function handleScroll() {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+            document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
+        }
+
+        // ==================== INIT ====================
+        document.addEventListener('DOMContentLoaded', () => {
+            loadTheme();
+            createParticles();
+            initBanner();
+            loadAllData();
+            observeAnimations();
+            window.addEventListener('scroll', handleScroll);
         });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
     </script>
 </body>
 </html>
